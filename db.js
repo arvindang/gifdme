@@ -6,16 +6,22 @@ var mongo = require('mongodb');
 
 var client = new mongo.Db('gifdme', new mongo.Server("127.0.0.1", 27017, {}), {w: 1});
 
-
+/*
 client.open(function(err, p_client) {
 	client.collection('gifs', function(err, collection) {
 	
 	});
 });
+*/
+
+var dbclient; 
+client.open(function(err, p_client) {
+	dbclient = p_client;
+});
+
 
 exports.insertGif = function(gif, url, cb) {
-	client.open(function(err, p_client) {
-		client.collection('gifs', function(err, collection) {
+		dbclient.collection('gifs', function(err, collection) {
 			collection.insert(gif, function(err, docs) {
 				if (err) {
 					console.log(err);
@@ -25,12 +31,10 @@ exports.insertGif = function(gif, url, cb) {
 				}
 			});
 		});
-	});	
 };
 
 exports.insertTag = function(tag, name, cb) {
-	client.open(function(err, p_client) {
-		client.collection('tags', function(err, collection) {
+		dbclient.collection('tags', function(err, collection) {
 			collection.insert(tag, function(err, docs) {
 				if (err) {
 					console.log(err);
@@ -40,54 +44,17 @@ exports.insertTag = function(tag, name, cb) {
 				}
 			});
 		});
-	});	
 };
 
-exports.findByTag = function(tag, cb) {
-	client.open(function(err, p_client) {
-		client.collection('gifs', function(err, collection) {
-			collection.find( { tags: tag }, function(err, docs) {
+exports.findByTag = function(tag, pos, cb) {
+		dbclient.collection('gifs', function(err, collection) {
+			collection.findOne( { tags: tag }, function(err, doc) {
 				if (err) {
 					console.log(err);
 					cb(null);
 				} else {
-					cb(docs);
+					cb(doc);
 				}
 			});
 		});
-	});
 }
-
-/*
-var nano = require('nano')('http://localhost:5984');
-
-var gifs = nano.use('gifs');
-var tags = nano.use('tags');
-	
-
-exports.queryByX = function(params, cb) {
-	gifs.view('gifs','by_X',params, function(err,body,head) {
-		if (err) {
-			console.log(err);
-			cb(null);
-		} else {
-			cb(body);
-		}
-	});
-}
-
-exports.queryByTest = function(pos, cb) {
-	// get q result (from cache as needed)
-	// get pos
-	gifs.view('gifs','by_url',{limit: 1, skip: pos}, function(err,body,head) {
-		if (err) {
-			console.log(err);
-			cb(null);
-		} else {
-			cb(body);
-		}
-	});
-};
-
-console.log(gifs);	
-*/

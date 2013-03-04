@@ -28,21 +28,47 @@ app.get('/hw', function(req, res) {
 	res.send('Hello World!');
 });
 
-function getGifId(id) {
-	return {error:"|||||||||||)"};
-}
+app.get('/g/fetch/tag/:tag', function(req,res) {
+	db.findByTag(req.tag, function(gif) {
+		if (gif) {
+			res.send(JSON.serialize(gif));
+		} else {
+			res.send("error");
+		}
+	});
+});
+
+app.get('/g/fetch/tag/:tag/:pos', function(req,res) {
+	db.findByTag(req.tag, req.pos, function(gif) {
+		if (gif) {
+			res.send(JSON.serialize(gif));
+		} else {
+			res.send("error");
+		}
+	});
+});
+
+app.get('/g/fetch/special/:type', function(req,res) {
+	//db.findBy
+	res.send('unimplemented');
+});
+
+app.get('/g/fetch/special/:type/:pos', function(req,res) {
+	res.send('unimplemented');
+});
 
 app.get('/g/special/randomTop', function(req,res) {
 	res.send( JSON.serialize(temp_gifs[0]) ); // TODO: use random index of view instead
 });
 
-app.put('/g/admin/new', function(req,res) {
+app.post('/g/admin/new', function(req,res) {
 	/*
 	* Expects JSON:
 	* url : string
 	* tags : array
 	*/
-	var newGif = JSON.parse(req.body);
+	console.log("Body: "); console.log(req.body)
+	var newGif = req.body;
 	newGif.uses = 0;
 	newGif.date = (new Date()).getTime();
 	var url = newGif.url;

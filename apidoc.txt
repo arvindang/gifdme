@@ -1,0 +1,19 @@
+API Docs:
+
+* /g/*
+- GIF related endpoints
+
+POST /g/admin/new
+- Expects:
+{
+	url: String
+	tags: Array
+}
+- Returns
+"ok" or "error"
+
+GET /g/fetch/tag/:tag
+- Expects:
+Tag name as :tag
+- Returns
+GIF Data Object 
