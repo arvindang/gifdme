@@ -6,18 +6,16 @@ var express = require('express');
 var app = express();
 
 // configure the app
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public') );
 app.engine('haml', engines.haml);
 // middleware goes here
 
 temp_gifs = [
 	{
-		id: 0,
 		url: 'http://i.imgur.com/d7rshs',
 		tags: ['happy', 'laugh']
 	},
 	{
-		id: 1,
 		url: 'http://i.imgur.com/d7rshs',
 		tags: ['happy', 'smile']
 	}
@@ -30,6 +28,11 @@ app.get('/hw', function(req, res) {
 function getGifId(id) {
 	return {error:"|||||||||||)"};
 }
+
+
+app.get('/g/special/randomTop', function(req,res) {
+	res.send( JSON.serialize(temp_gifs[0]) ); // TODO: use random index of view instead
+});
 /*
 app.get('/g/query/:q', function(req,res) {
 	// database magic goes here

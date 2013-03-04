@@ -1,3 +1,6 @@
+// Gifdme db code
+// Author: Sean Muron
+// Last modified: 3/4/13
 var nano = require('nano')('http://localhost:5984');
 
 var gifs = nano.use('gifs');
