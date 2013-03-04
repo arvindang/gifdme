@@ -1,0 +1,12 @@
+- gif
+{
+	url: ""
+	metadata: ??
+	tags: [?,?,?]
+}
+
+- tags
+{
+	??
+}
+
