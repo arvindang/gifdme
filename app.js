@@ -9,6 +9,7 @@ var app = express();
 app.use(express.static(__dirname + '/public') );
 app.use('/img', express.static(__dirname + '/public/img') );
 app.use('/touch-icons', express.static(__dirname + '/public/touch-icons') );
+app.use(express.bodyParser());
 //app.engine('haml', r);
 // middleware goes here
 
@@ -33,6 +34,22 @@ function getGifId(id) {
 
 app.get('/g/special/randomTop', function(req,res) {
 	res.send( JSON.serialize(temp_gifs[0]) ); // TODO: use random index of view instead
+});
+
+app.put('/g/admin/new', function(req,res) {
+	/*
+	* Expects JSON:
+	* url : string
+	* tags : array
+	*/
+	var newGif = JSON.parse(req.body);
+	newGif.uses = 0;
+	newGif.date = (new Date()).getTime();
+	var url = newGif.url;
+	db.insertGif(newGif, url, function(result) {
+		if (result) res.send('ok');
+		else res.send('error');
+	});
 });
 
 /*
