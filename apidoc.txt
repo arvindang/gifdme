@@ -4,7 +4,7 @@ API Docs:
 - GIF related endpoints
 
 POST /g/admin/new
-- Expects:
+- Expects (as Content-Type: application/json) :
 {
 	url: String
 	tags: Array
