@@ -46,6 +46,8 @@ exports.insertTag = function(tag, name, cb) {
 		});
 };
 
+
+// todo: sort by uses in tweets
 exports.findByTag = function(tag, pos, cb) {
 		dbclient.collection('gifs', function(err, collection) {
 			collection.findOne( { tags: tag }, function(err, doc) {

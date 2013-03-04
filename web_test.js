@@ -35,3 +35,10 @@ test_request({
 	method: "POST",
 	headers: {"Content-Type": "application/json" }
 	}, '{ "url": "i.imgur.com/32urfw.gif", "tags":["happy"]}');
+	
+test_request({
+	hostname: "localhost",
+	port: "8080",
+	path: "/g/fetch/tag/happy",
+	method: "GET",
+	});
