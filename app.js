@@ -7,7 +7,9 @@ var app = express();
 
 // configure the app
 app.use(express.static(__dirname + '/public') );
-app.engine('haml', engines.haml);
+app.use('/img', express.static(__dirname + '/public/img') );
+app.use('/touch-icons', express.static(__dirname + '/public/touch-icons') );
+//app.engine('haml', r);
 // middleware goes here
 
 temp_gifs = [
@@ -29,10 +31,10 @@ function getGifId(id) {
 	return {error:"|||||||||||)"};
 }
 
-
 app.get('/g/special/randomTop', function(req,res) {
 	res.send( JSON.serialize(temp_gifs[0]) ); // TODO: use random index of view instead
 });
+
 /*
 app.get('/g/query/:q', function(req,res) {
 	// database magic goes here

@@ -1,0 +1,141 @@
+/* =========================
+
+## Fonts
+
+$sans-serif: "Helvetica Neue", sans-serif;
+$titles: Josefin, $sans-serif;
+
+## Colors
+
+$mint-green: #a8dba8; 168, 219, 168;
+$light-coral: #f38268; 243, 130, 104;
+$dark-coral: #f75b4b; 247, 91, 75;
+$darker-coral: #ff4835;
+
+## Variables
+
+========================= */
+
+/* =========================
+GLOBAL
+========================= */
+
+body {
+	font: 14px/1.25 "Helvetica Neue", sans-serif;
+  /*text-shadow: 0 1px 0 #fff;*/
+}
+
+h1, h2, h3 {
+	font-family: 'Josefin Sans', "Helvetica Neue", sans-serif;
+}
+
+
+h1 {
+	font-size: 36px;
+}
+
+/* =========================
+MODULES
+========================= */
+
+button {
+	background: #f38268;
+	border: none;
+	color: white;
+	font: 22px/1.25 "Helvetica Neue", sans-serif;
+	padding: 20px;
+	-webkit-transition-property:background; /* Safari and Chrome */
+		-moz-transition-property: background; /* Firefox 4 */
+			 -o-transition-property:background; /* Opera */
+				 transition-property: background;
+	-webkit-transition-duration: .5s;
+		 -moz-transition-duration: .5s;
+	     -o-transition-duration: .5s;
+          transition-duration: .5s;
+  -webkit-transition-duration: linear;
+	   -moz-transition-duration: linear;
+       -o-transition-duration: linear;
+   transition-timing-function: linear;
+   -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15), 0 5px 0 #ff4835;
+	    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15), 0 5px 0 #ff4835;
+        -o-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15), 0 5px 0 #ff4835;
+           box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15), 0 5px 0 #ff4835;
+}
+
+button:hover {
+	background: #f75b4b;
+}
+
+button:active {
+	-webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.15),0 2px 0 #ff4835;
+		 -moz-box-shadow: 0 1px 0 rgba(255,255,255,0.15),0 2px 0 #ff4835;
+	     -o-box-shadow: 0 1px 0 rgba(255,255,255,0.15),0 2px 0 #ff4835;
+	        box-shadow: 0 1px 0 rgba(255,255,255,0.15),0 2px 0 #ff4835;
+	-webkit-transform: translateY(3px);
+	   -moz-transform: translateY(3px);
+	     -o-transform: translateY(3px);
+	        transform: translateY(3px);
+}
+
+/* =========================
+Homepage
+========================= */
+
+.main {
+	margin-top: 60px;
+	height: 480px;
+	width: 100%;
+	background-image: url(img/tumblr_mj0ph5vhut1rfjkwpo1_500.gif);
+	/*background-image: url(img/tumblr_mhgmt2JDRN1rfjkwpo1_500.gif);*/
+	background-size: cover;
+	color: white;
+	text-align: center;
+}
+
+.main img {
+	margin: 60px 0;
+	width: 320px;
+}
+
+.main p {
+	background: rgba(168, 219, 168, .7);
+	max-width: 480px;
+	margin: 2px auto;
+	line-height: 54px;
+	font-size: 24px;
+}
+
+.main h1 {
+	font: 0/0 a;
+}
+
+.main button {
+	margin-top: 44px;
+	position: relative;
+	width: 300px;
+}
+
+.main button:before {
+	content:url('img/twitter-bird-dark-bgs.png');
+	background-size: 40px;
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	margin-top: -7px;
+	margin-left: 6px;
+}
+
+.twitter-logo {
+	padding-left: 26px;
+}
+
+/* =========================
+MEDIA QUERIES
+========================= */
+
+@media screen and (max-width: 440px) {
+	.main p {
+		line-height: 32px;
+		padding: 5px;
+	}
+}
