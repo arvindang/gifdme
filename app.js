@@ -49,6 +49,12 @@ app.get('/g/fetch/tag/:tag/:pos', function(req,res) {
 	});
 });
 
+app.get('/g/flag/:id', function(req,res) {
+	res.send('not implemented');
+});
+
+
+
 app.get('/g/special/randomTop', function(req,res) {
 	// FIND BY SUPER COOL QUERY
 	// then grab a random index and dump it out
@@ -68,6 +74,7 @@ app.post('/g/admin/new', function(req,res) {
 		else res.send('error');
 	});
 });
+//app.post('/g/admin/delete')
 
 app.listen(8080);
 console.log("Listening on 8080.");
