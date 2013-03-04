@@ -1,10 +1,13 @@
 // Gifdme main app
 // Code by: S. Muron
-// Last changed: 3/3/13
+// Last changed: 3/4/13
+var db = require('./db.js');
 var express = require('express');
 var app = express();
-var db = require('./db.js');
-// static goes here ^
+
+// configure the app
+app.use(express.static(__dirname + '/public'));
+app.engine('haml', engines.haml);
 // middleware goes here
 
 temp_gifs = [
