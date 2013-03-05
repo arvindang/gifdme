@@ -66,6 +66,7 @@ app.post('/g/admin/new', function(req,res) {
 	* Expects JSON:
 	* url : string
 	* tags : array
+	* submitter: string (@xxxxxx)
 	*/
 	var newGif = req.body;
 	newGif.uses = 0; newGif.date = (new Date()).getTime();

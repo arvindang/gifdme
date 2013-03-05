@@ -1,0 +1,73 @@
+/* =========================
+Homepage
+========================= */
+
+.main {
+	margin: 60px 0;
+	height: 480px;
+	width: 100%;
+	background-image: url(../img/tumblr_mj0ph5vhut1rfjkwpo1_500.gif);
+	/*background-image: url(img/tumblr_mhgmt2JDRN1rfjkwpo1_500.gif);*/
+	background-size: cover;
+	color: white;
+	text-align: center;
+}
+
+.main img {
+	margin: 60px 0;
+	width: 320px;
+}
+
+.main p {
+	background: rgba(168, 219, 168, .7);
+	border-radius: 2px;
+	max-width: 480px;
+	margin: 2px auto;
+	line-height: 54px;
+	font-size: 24px;
+}
+
+.main h1 {
+	font: 0/0 a;
+}
+
+.main button {
+	margin-top: 44px;
+	position: relative;
+	width: 300px;
+}
+
+.main button:before {
+	content:url('../img/twitter-bird-dark-bgs.png');
+	background-size: 40px;
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	margin-top: -7px;
+	margin-left: 6px;
+}
+
+.twitter-logo {
+	padding-left: 26px;
+}
+
+.social a {
+	color: #f38268;
+}
+
+.social a:hover {
+	color: #f75b4b;
+}
+
+
+
+/* =========================
+MEDIA QUERIES
+========================= */
+
+@media screen and (max-width: 440px) {
+	.main p {
+		line-height: 32px;
+		padding: 5px;
+	}
+}

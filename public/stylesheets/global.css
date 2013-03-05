@@ -1,0 +1,119 @@
+/* =========================
+
+## Fonts
+
+$sans-serif: "Helvetica Neue", sans-serif;
+$titles: Josefin, $sans-serif;
+
+## Colors
+
+$light-gray: #f0f0f0;
+$mint-green: #a8dba8; 168, 219, 168;
+$light-coral: #f38268; 243, 130, 104;
+$dark-coral: #f75b4b; 247, 91, 75;
+$darker-coral: #ff4835;
+
+## Variables
+
+========================= */
+
+/* =========================
+GLOBAL
+========================= */
+
+/*@import url(http://fonts.googleapis.com/css?family=Josefin+Sans:400,600,700);*/
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+body {
+	font: 14px/1.25 "Helvetica Neue", sans-serif;
+  /*text-shadow: 0 1px 0 #fff;*/
+  color: #666;
+}
+
+.container {
+	max-width: 960px;
+	margin: 0 auto;
+}
+
+h1, h2, h3 {
+	font-family: 'Josefin Sans', "Helvetica Neue", sans-serif;
+}
+
+h1 {
+	font-size: 36px;
+}
+
+/* =========================
+MODULES
+========================= */
+
+a, button {
+	-webkit-transition-property: background; /* Safari and Chrome */
+		 -moz-transition-property: background; /* Firefox 4 */
+			 -o-transition-property: background; /* Opera */
+				  transition-property: background;
+	-webkit-transition-duration: .5s;
+		 -moz-transition-duration: .5s;
+	     -o-transition-duration: .5s;
+          transition-duration: .5s;
+  -webkit-transition-duration: linear;
+	   -moz-transition-duration: linear;
+       -o-transition-duration: linear;
+   transition-timing-function: linear;
+}
+
+a {
+	text-decoration: none;
+	-webkit-transition-property: color; /* Safari and Chrome */
+		 -moz-transition-property: color; /* Firefox 4 */
+			 -o-transition-property: color; /* Opera */
+				  transition-property: color;
+	color: #a8dba8;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+button {
+	background: #f38268;
+	border-radius: 2px;
+	border: none;
+	color: white;
+	font: 22px/1.25 "Helvetica Neue", sans-serif;
+	padding: 20px;
+   -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15), 0 5px 0 #ff4835;
+	    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15), 0 5px 0 #ff4835;
+        -o-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15), 0 5px 0 #ff4835;
+           box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15), 0 5px 0 #ff4835;
+}
+
+button:hover {
+	background: #f75b4b;
+}
+
+button:active {
+	-webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.15),0 2px 0 #ff4835;
+		 -moz-box-shadow: 0 1px 0 rgba(255,255,255,0.15),0 2px 0 #ff4835;
+	     -o-box-shadow: 0 1px 0 rgba(255,255,255,0.15),0 2px 0 #ff4835;
+	        box-shadow: 0 1px 0 rgba(255,255,255,0.15),0 2px 0 #ff4835;
+	-webkit-transform: translateY(3px);
+	   -moz-transform: translateY(3px);
+	     -o-transform: translateY(3px);
+	        transform: translateY(3px);
+}
+
+input {
+	border: 1px solid #ccc;
+	margin: 10px 20px;
+	padding: 14px;
+	font-size: 22px;
+	line-height: 27px;
+	min-width: 92.70833333%;
+	border-radius: 2px;
+}
