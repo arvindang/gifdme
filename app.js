@@ -10,6 +10,7 @@ var app = express();
 app.use(express.static(__dirname + '/public') );
 app.use('/img', express.static(__dirname + '/public/img') );
 app.use('/touch-icons', express.static(__dirname + '/public/touch-icons') );
+app.use('/stylesheets', express.static(__dirname + '/public/stylesheets') );
 app.use(express.bodyParser());
 //app.engine('haml', r);
 // middleware goes here

@@ -42,6 +42,11 @@ $(function() {
 		});
 	});
 	
+	$(".cancel-tag-click").click(function() { 
+		overrideTag = false;
+		$("#tweetfield").change();
+	});
+	
 
 	$("ul.items > img").lazyload({
 		container: $("ul.items")
