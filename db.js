@@ -48,16 +48,17 @@ exports.insertTag = function(tag, name, cb) {
 
 
 // todo: sort by uses in tweets
-exports.findByTag = function(tag, pos, cb) {
+exports.findByTag = function(tag, pos, count, cb) {
 		dbclient.collection('gifs', function(err, collection) {
-//			collection.findOne( { tags: [tag] }, function(err, doc) {
-			collection.findOne( {}, function(err, docd) {
+
+			collection.find( {'tag':[tag]}, {'skip':pos,'limit':count}, function(err, docd) {
+				//console.log(docd.nextObject());
 				if (err) {
 					console.log("Error:"+err);
 					cb(null);
 				} else {
 					console.log("no error");
-					console.log(docd);
+					//console.log(docd);
 					cb(docd);
 				}
 			});
