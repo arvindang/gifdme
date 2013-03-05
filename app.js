@@ -44,18 +44,8 @@ app.get('/g/fetch/tag/:tag/:pos/:count', function(req,res) {
 	console.log(req);
 	db.findByTag(req.params.tag, req.params.pos, req.params.count, function(gif) {
 		if (gif) {
-			var gifs = [];
-			console.log("count (p): "+req.params.count);
-			console.log("count (l): "+gif.totalNumberOfRecords);
-			//console.log(gif);
-			var count = Math.min(req.params.count, gif.totalNumberOfRecords);
-			console.log("count: "+count);
-			for (var i = 0; i < count; i++) {
-				gifs.push(gif.nextObject());
-				console.log(gifs[i]);
-			}
 			
-			res.send(gifs);
+			res.send(gif);
 		} else {
 			res.send("error");
 		}

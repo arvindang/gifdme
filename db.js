@@ -50,17 +50,17 @@ exports.insertTag = function(tag, name, cb) {
 // todo: sort by uses in tweets
 exports.findByTag = function(tag, pos, count, cb) {
 		dbclient.collection('gifs', function(err, collection) {
-
-			collection.find( {'tag':[tag]}, {'skip':pos,'limit':count}, function(err, docd) {
-				//console.log(docd.nextObject());
+		collection.find( {'tags':[tag]}, {'skip':pos,'limit':count}).hint().explain();
+		collection.find( {'tags':[tag]}, {'skip':pos,'limit':count}).toArray(function(err, docd) {
+				
 				if (err) {
 					console.log("Error:"+err);
 					cb(null);
 				} else {
 					console.log("no error");
-					//console.log(docd);
+					console.log(docd);
 					cb(docd);
 				}
-			});
 		});
+	});
 }
