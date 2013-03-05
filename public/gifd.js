@@ -13,6 +13,25 @@ $(function() {
 
 });
 
+var static_tags = [
+	"happy",
+	"sad",
+	"love",
+	"hate",
+	"party",
+	"fail",
+	"bored",
+	"eyeroll"
+];
+function tagFromTweet(tw) {
+	// Find tagged emotions in tweets
+	
+	for (var i = 0, ii = static_tags.length; i < ii; i++) {
+		if Regexp.test("\b\%"+static_tags[i]+"\b",tw) return static_tags[i];
+	}	
+	return "";
+};
+
 // TODO generalize or split function off
 function getGifByTag(tag, pos, callback) {
 	if (!pos) pos=0

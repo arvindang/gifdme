@@ -54,8 +54,6 @@ app.get('/g/flag/:id', function(req,res) {
 	res.send('not implemented');
 });
 
-
-
 app.get('/g/special/randomTop', function(req,res) {
 	// FIND BY SUPER COOL QUERY
 	// then grab a random index and dump it out
@@ -76,7 +74,21 @@ app.post('/g/admin/new', function(req,res) {
 		else res.send('error');
 	});
 });
-//app.post('/g/admin/delete')
+app.get('/g/admin/delete/:url' function(req,res) {
+	// db.deleteGif(req.url, function(err) {
+	// if (err) res.send("error");
+	// res.send("ok");
+	// }
+	res.send("not implemented");
+});
+
+
+
+app.post('/t/send', function(req,res) {
+	// magic goes here
+	
+	res.send('unimplemented');
+});
 
 app.listen(8080);
 console.log("Listening on 8080.");
