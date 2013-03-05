@@ -74,7 +74,7 @@ app.post('/g/admin/new', function(req,res) {
 		else res.send('error');
 	});
 });
-app.get('/g/admin/delete/:url' function(req,res) {
+app.get('/g/admin/delete/:url', function(req,res) {
 	// db.deleteGif(req.url, function(err) {
 	// if (err) res.send("error");
 	// res.send("ok");

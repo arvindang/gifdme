@@ -3,13 +3,14 @@
 // document ready
 $(function() {
 
-	getGifByTag("happy",0,function(resp) {
-		window.setTimeout(function() {
-			$(".item-image").empty().append('<img src="'+resp.url+'">')
+	getGifByTag("happy",0,10,function(resp) {
+			$(".slider ul").append('<li><img src="'+resp.url+'"/></li>');
 		}, 5000);
 	});
 
-	
+	$(".slider > img").lazyload({
+		container: $(".slider");
+	});
 
 });
 
@@ -23,6 +24,9 @@ var static_tags = [
 	"bored",
 	"eyeroll"
 ];
+
+
+
 function tagFromTweet(tw) {
 	// Find tagged emotions in tweets
 	
@@ -33,7 +37,8 @@ function tagFromTweet(tw) {
 };
 
 // TODO generalize or split function off
-function getGifByTag(tag, pos, callback) {
-	if (!pos) pos=0
+function getGifsByTag(tag, pos, count, callback) {
+	if (!pos) pos=0;
+	if (!count) count=1;
 	$.get("http://localhost:8080/g/fetch/tag/"+tag+"/"+pos, callback);
 }
