@@ -3,6 +3,7 @@
 // Last changed: 3/4/13
 var db = require('./db.js');
 var express = require('express');
+var twitter = require('./twitter.js');
 var app = express();
 
 // configure the app
@@ -34,7 +35,6 @@ app.get('/g/fetch/tag/:tag/:pos/:count', function(req,res) {
 	console.log(req);
 	db.findByTag(req.params.tag, req.params.pos, req.params.count, function(gif) {
 		if (gif) {
-			
 			res.send(gif);
 		} else {
 			res.send("error");
@@ -66,10 +66,14 @@ app.post('/g/admin/new', function(req,res) {
 		else res.send('error');
 	});
 });
+
 app.get('/g/admin/delete/:url', function(req,res) {
+	// check if logged in as admin 
+	// if so: else berate them + increase suspicion vs user/IP (for scaling / security)
 	// db.deleteGif(req.url, function(err) {
-	// if (err) res.send("error");
+	// if successful
 	// res.send("ok");
+	// else minor suspicion vs user/IP
 	// }
 	res.send("not implemented");
 });

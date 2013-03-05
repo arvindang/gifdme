@@ -46,21 +46,42 @@ exports.insertTag = function(tag, name, cb) {
 		});
 };
 
+exports.deleteGif = function(url, cb) {
+	dbclient.collection('gifs', function(err, collection) {
+		collection.delete({'url':url}, function(err, resp) {
+			if (err) {
+				console.log(err);
+				cb(false);
+			} else {
+				cb(true);
+			}
+		});
+	});
+};
+
+exports.findByTagSortUses = function(tag, pos, count, cb) {
+	dbclient.collection('gifs', function(err, collection) {
+		collection.find( {'tags':[tag]}, {'skip':pos,'limit':count, 'sort':'uses'}).toArray(function(err, docd) {
+			if (err) {
+				console.log("Error with findByTag:"+err);
+				cb(null);
+			} else {
+				cb(docd);
+			}
+		});
+	});
+}
 
 // todo: sort by uses in tweets
 exports.findByTag = function(tag, pos, count, cb) {
-		dbclient.collection('gifs', function(err, collection) {
-		collection.find( {'tags':[tag]}, {'skip':pos,'limit':count}).hint().explain();
+	dbclient.collection('gifs', function(err, collection) {
 		collection.find( {'tags':[tag]}, {'skip':pos,'limit':count}).toArray(function(err, docd) {
-				
-				if (err) {
-					console.log("Error:"+err);
-					cb(null);
-				} else {
-					console.log("no error");
-					console.log(docd);
-					cb(docd);
-				}
+			if (err) {
+				console.log("Error with findByTag:"+err);
+				cb(null);
+			} else {
+				cb(docd);
+			}
 		});
 	});
 }
