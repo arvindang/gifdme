@@ -34,7 +34,7 @@ test_request({
 	path: "/g/admin/new",
 	method: "POST",
 	headers: {"Content-Type": "application/json" }
-	}, '{ "url": "i.imgur.com/32urfw.gif", "tags":["happy"]}');
+	}, '{ "url": "img/gifs/tumblr_mj0ph5vhut1rfjkwpo1_500.gif", "tags":["happy"]}');
 	
 test_request({
 	hostname: "localhost",

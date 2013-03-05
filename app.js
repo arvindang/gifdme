@@ -31,9 +31,10 @@ app.get('/hw', function(req, res) {
 
 // Tag search
 app.get('/g/fetch/tag/:tag', function(req,res) {
-	db.findByTag(req.tag, function(gif) {
+	db.findByTag(req.tag, 0, function(gif) {
+		console.log(gif);
 		if (gif) {
-			res.send(JSON.serialize(gif));
+			res.send(gif);
 		} else {
 			res.send("error");
 		}
@@ -42,7 +43,7 @@ app.get('/g/fetch/tag/:tag', function(req,res) {
 app.get('/g/fetch/tag/:tag/:pos', function(req,res) {
 	db.findByTag(req.tag, req.pos, function(gif) {
 		if (gif) {
-			res.send(JSON.serialize(gif));
+			res.send(gif);
 		} else {
 			res.send("error");
 		}
