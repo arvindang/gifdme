@@ -86,15 +86,21 @@ button {
 	border: none;
 	color: white;
 	font: 22px/1.25 "Helvetica Neue", sans-serif;
-	padding: 20px;
+	/*padding: 20px;*/
    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15), 0 5px 0 #ff4835;
 	    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15), 0 5px 0 #ff4835;
         -o-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15), 0 5px 0 #ff4835;
            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15), 0 5px 0 #ff4835;
 }
 
+button a {
+	padding: 20px;
+	display: block;
+}
+
 button:hover {
 	background: #f75b4b;
+	cursor: hand;
 }
 
 button:active {
@@ -114,6 +120,5 @@ input {
 	padding: 14px;
 	font-size: 22px;
 	line-height: 27px;
-	min-width: 92.70833333%;
 	border-radius: 2px;
 }

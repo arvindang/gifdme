@@ -25,6 +25,19 @@ header a {
 
 header a:hover {
 	color: #f75b4b;
+	text-decoration: none;
+}
+
+.toolbar input {
+	width: 83.708333%;
+}
+
+.toolbar button {
+	left: -17px;
+	padding: 10px;
+	position: relative;
+	top: -3px;
+	width: 80px;
 }
 
 .shelf {

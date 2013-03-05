@@ -3,7 +3,7 @@ Homepage
 ========================= */
 
 .main {
-	margin: 60px 0;
+	margin: 60px 0 30px 0;
 	height: 480px;
 	width: 100%;
 	background-image: url(../img/tumblr_mj0ph5vhut1rfjkwpo1_500.gif);
@@ -37,26 +37,85 @@ Homepage
 	width: 300px;
 }
 
-.main button:before {
+.twitter-logo:before {
 	content:url('../img/twitter-bird-dark-bgs.png');
 	background-size: 40px;
 	width: 40px;
 	height: 40px;
 	position: absolute;
-	margin-top: -7px;
-	margin-left: 6px;
+	left: 27px;
+	top: 12px;
 }
 
 .twitter-logo {
 	padding-left: 26px;
+	line-height: 57px;
+}
+
+.social {
+	text-align: center;
+	line-height: 55px;
 }
 
 .social a {
-	color: #f38268;
+	display: inline-block;
+	-webkit-transition-property: background; /* Safari and Chrome */
+		 -moz-transition-property: background; /* Firefox 4 */
+			 -o-transition-property: background; /* Opera */
+				  transition-property: background;
+	-webkit-transition-duration: .5s;
+		 -moz-transition-duration: .5s;
+	     -o-transition-duration: .5s;
+          transition-duration: .5s;
+  -webkit-transition-duration: linear;
+	   -moz-transition-duration: linear;
+       -o-transition-duration: linear;
+   transition-timing-function: linear;
+	color: white;
+	background: #a8dba8;
+	font-size: 20px;
+	padding: 6px 20px;
+  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15), 0 5px 0 #7fdb7f;
+     -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15), 0 5px 0 #7fdb7f;
+       -o-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15), 0 5px 0 #7fdb7f;
+          box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15), 0 5px 0 #7fdb7f;
 }
 
 .social a:hover {
-	color: #f75b4b;
+	text-decoration: none;
+	background: #88db88;
+}
+
+.social a:active {
+	-webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.15),0 2px 0 #7fdb7f;
+	   -moz-box-shadow: 0 1px 0 rgba(255,255,255,0.15),0 2px 0 #7fdb7f;
+       -o-box-shadow: 0 1px 0 rgba(255,255,255,0.15),0 2px 0 #7fdb7f;
+          box-shadow: 0 1px 0 rgba(255,255,255,0.15),0 2px 0 #7fdb7f;
+  -webkit-transform: translateY(3px);
+     -moz-transform: translateY(3px);
+       -o-transform: translateY(3px);
+          transform: translateY(3px);
+}
+
+#mc_embed_signup {
+	margin: 0 auto;
+	width: 500px;
+}
+
+#mc_embed_signup input {
+	margin: 20px 0 0 0;
+	display: inline;
+	min-width: 0;
+	width: 300px;
+}
+
+#mc_embed_signup button {
+	display: inline;
+	width: 160px;
+	color: white;
+	margin-top: 0; /*reset main button styling*/
+	padding: 14px;
+	top: -1px;
 }
 
 

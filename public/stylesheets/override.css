@@ -49,3 +49,41 @@
 .bar-title .button-next:active:before {
   background-color: #f73823;
 }
+
+/* =========================
+Mobile Home Page
+========================= */
+
+.clear {
+  clear: both;
+}
+
+.profile {
+  border-radius: 50%;
+  width: 52px;
+  float: left;
+  margin-top: 8px;
+  height: auto;
+}
+
+.twitter-info {
+  float: left;
+  width: 210px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.embedded-image {
+  width: 300px;
+}
+
+.twitter-functions p {
+  line-height: 44px;
+  margin: 0 5px;
+  display: inline;
+}
+
+.tweetstream li {
+  padding-bottom: 4px;
+  padding-right: 10px;
+}

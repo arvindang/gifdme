@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Gifd</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Set Apple icons for when prototype is saved to home screen -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="touch-icons/GifdmeFavicon.png">
+    <!-- <link rel="apple-touch-icon-precomposed" sizes="72x72" href="touch-icons/apple-touch-icon-72x72.png"> -->
+    <!-- <link rel="apple-touch-icon-precomposed" sizes="57x57" href="touch-icons/apple-touch-icon-57x57.png"> -->
+
+    <!-- Include the compiled Ratchet CSS -->
+    <link rel="stylesheet" href="stylesheets/ratchet.css">
+    <link rel="stylesheet" href="stylesheets/override.css">
+
+    <!-- Include the compiled Ratchet JS -->
+    <script src="ratchet.js"></script>
+
+    <!-- Intro paragraph styles. Delete once you start using this page -->
+    <style type="text/css">
+        .welcome {
+          line-height: 1.5;
+          color: #555;
+        }
+    </style>
+
+  </head>
+  <body>
+
+  <!-- Make sure all your bars are the first things in your <body> -->
+  <header class="bar-title">
+    <h1 class="title">Gifd</h1>
+    <a class="button" href="mobile-post.html" data-ignore="push">Tweet</a>
+  </header>
+
+  <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+  <div class="content">
+
+    <ul class="list tweetstream">
+      <li>
+        <img class="profile" src="img/arvin_dang_profile.jpg"></img>
+        <div class="twitter-info">
+          <p><strong>Arvin Dang</strong></p>
+          <p>A tweet is only 140 characters. But when you start adding GIFs, just imagine what will start happening. :happy:</p>
+        </div>
+        <div class="clear"></div>
+        <img class="embedded-image" src="img/gifs/tumblr_mj0ph5vhut1rfjkwpo1_500.gif"></img>
+        <div class="twitter-functions">
+          <p><a href="#">Reply</a></p>
+          <p><a href="#">Retweet</a></p>
+          <p><a href="#">Favorite</a></p>
+        </div>
+      </li>
+
+      <li>
+        <img class="profile" src="img/arvin_dang_profile.jpg"></img>
+        <div class="twitter-info">
+          <p><strong>Arvin Dang</strong></p>
+          <p>I mean, how lame is this tweet by comparison?</p>
+        </div>
+        <div class="clear"></div>
+        <div class="twitter-functions">
+          <p><a href="#">Reply</a></p>
+          <p><a href="#">Retweet</a></p>
+          <p><a href="#">Favorite</a></p>
+        </div>
+      </li>
+
+    </ul>
+
+  </div>
+
+  </body>
+</html>
