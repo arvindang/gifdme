@@ -13,16 +13,6 @@ app.use(express.bodyParser());
 //app.engine('haml', r);
 // middleware goes here
 
-temp_gifs = [
-	{
-		url: 'http://i.imgur.com/d7rshs',
-		tags: ['happy', 'laugh']
-	},
-	{
-		url: 'http://i.imgur.com/d7rshs',
-		tags: ['happy', 'smile']
-	}
-];
 
 // Hello World!
 app.get('/hw', function(req, res) {
