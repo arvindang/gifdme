@@ -9,7 +9,7 @@ var currentTag = "",
 $(function() {
 	$('.slider').hide();
 	
-	//	$('.slider').addEventListener('slide', setCurrentGif);
+		$('.slider').addEventListener('slide', setCurrentGif);
 	
 	// Tweet entry form
 	$(".tweet-form textarea").keyup(function() {
@@ -43,7 +43,7 @@ $(function() {
 	});
 	// GIF browsing UI
 	// !?@#@$
-
+	/*
 	$("ul.items").on('click', '.item-image img', function() {
 		var i = $(this);
 		var gifId = i.attr("id").substring(3);
@@ -57,6 +57,7 @@ $(function() {
 			selectedGif = gifId;
 		}
 	});
+	*/
 
 	// Tag click UI
 	$(".tag-click").click(function() {
@@ -102,7 +103,9 @@ function startTwitterAuth() {
 }
 
 
-function setCurrentGif(slider) {
+function setCurrentGif(err, slider) {
+	console.log(slider);
+	console.log(err);
 	selectedGif = slider.slideNumber;
 }
 
