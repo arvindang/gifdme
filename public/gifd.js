@@ -102,7 +102,11 @@ function submitTweet(callback) {
 	if (!txt || selectedGif == -1 || txt.length>112) {
 		console.log(txt.length)
 		console.log(link);
-		alert('something went wrong');
+		if (seletedGif == -1) {
+			alert('select a gif, first!');
+		} else {
+			alert('something went wrong');
+		}
 		return;
 	}
 		
