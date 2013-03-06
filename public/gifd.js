@@ -2,12 +2,12 @@
 var currentTag = "",
 	overrideTag = false,
 	listPosition = 0;
-
+	selectedGif = -1;
 // document ready
 $(function() {
 	$('.slider').hide();
 	// Tweet entry form
-	$(".tweet-form textarea").change(function() {
+	$(".tweet-form textarea").keyup(function() {
 		var newTag = tagFromTweet($(this).val());
 		if (currentTag != newTag && !overrideTag) {
 			currentTag = newTag;
@@ -16,7 +16,8 @@ $(function() {
 				getGifsByTag(currentTag,0,10,function(resp) {
 					for (var i = 0, ii = resp.length; i < ii; i++) {
 						var gif = resp[i];
-						$("ul.items").append('<li class="item"><div class="item-image"><img src="'+gif.url+'"></div><p><strong>Tags:</strong><ul class="tag-list"><li><a href="#">Celebrate</a></li><li><a href="#">Happy</a></li><li><a href="#">Funny</a></li></ul></p></li>');
+						console.log(gif);
+						$("ul.items").empty().append('<li class="item"><div class="item-image"><img id="gif'+i+'" src="'+gif.url+'"></div><p><strong>Tags:</strong><ul class="tag-list"><li><a href="#">Celebrate</a></li><li><a href="#">Happy</a></li><li><a href="#">Funny</a></li></ul></p></li>');
 					}
 				});
 			} else {
@@ -37,6 +38,21 @@ $(function() {
 	// GIF browsing UI
 	// !?@#@$
 	
+	$("ul.items").on('click', '.item-image img', function() {
+		var i = $(this);
+		var gifId = i.attr("id").substring(3);
+		gifId = parseInt(gifId);
+		
+		if (selectedGif == gifId) {
+			i.removeClass('toggleImage');
+			selectedGif = -1;
+		} else {
+			i.addClass('toggleImage');
+			$("gif"+selectedGif).removeClass('toggleImage');
+			selectedGif = gifId;
+		}
+	});
+	
 	// Tag click UI
 	$(".tag-click").click(function() {
 		currentTag = $(this).val();
@@ -44,7 +60,7 @@ $(function() {
 		getGifsByTag(currentTag,0,10,function(resp) {
 			for (var i = 0, ii = resp.length; i < ii; i++) {
 				var gif = resp[i];
-				$("ul.items").append('<li class="item"><div class="item-image"><img src="'+gif.url+'"></div><p><strong>Tags:</strong><ul class="tag-list"><li><a href="#">Celebrate</a></li><li><a href="#">Happy</a></li><li><a href="#">Funny</a></li></ul></p></li>');
+				$("ul.items").empty().append('<li class="item"><div class="item-image"><img src="'+gif.url+'"></div><p><strong>Tags:</strong><ul class="tag-list"><li><a href="#">Celebrate</a></li><li><a href="#">Happy</a></li><li><a href="#">Funny</a></li></ul></p></li>');
 			}
 		});
 	});
@@ -80,8 +96,16 @@ function startTwitterAuth() {
 
 function submitTweet(callback) {
 	var txt = $(".tweet-form textarea").val(),
-		link = "http://i.imgur.com/jvYIj5Q.gif";
-		txt = txt + " " + link + " (via gifdme.com)";
+		link = $("#gif"+selectedGif).attr("src");
+		txt = txt + " " + link + " (gifdme)";
+		
+	if (!txt || selectedGif == -1 || txt.length>112) {
+		console.log(txt.length)
+		console.log(link);
+		alert('something went wrong');
+		return;
+	}
+		
 	// TODO vet the link, tweet length etc
 	$.post(endpoint+"/t/send", {'status': txt}, function(res) {
 		console.log(res);
@@ -93,7 +117,7 @@ function tagFromTweet(tw) {
 	// Find tagged emotions in tweets
 	
 	for (var i = 0, ii = static_tags.length; i < ii; i++) {
-		var re = new RegExp("[^\b]?[%]"+static_tags[i]+"\b?","gim");
+		var re = new RegExp("[^\b]?[%]"+static_tags[i]+"[\b$]?","gim");
 		if (re.test(tw) ) { return static_tags[i]; }
 	}	
 	return "";
@@ -117,7 +141,7 @@ function lazyGifList() {
 		getGifsByTag(currentTag,gifCount,10,function(resp) {
 			for (var i = 0, ii = resp.length; i < ii; i++) {
 				var gif = resp[i];
-				$("ul.items").append('<li class="item"><div class="item-image"><img src="'+gif.url+'"></div><p><strong>Tags:</strong><ul class="tag-list"><li><a href="#">Celebrate</a></li><li><a href="#">Happy</a></li><li><a href="#">Funny</a></li></ul></p></li>');
+				$("ul.items").append('<li class="item"><div class="item-image"><img id="gif'+(gifCount+i)+'"src="'+gif.url+'"></div><p><strong>Tags:</strong><ul class="tag-list"><li><a href="#">Celebrate</a></li><li><a href="#">Happy</a></li><li><a href="#">Funny</a></li></ul></p></li>');
 			}
 		});
 	}

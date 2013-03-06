@@ -53,6 +53,13 @@ h1 {
 	font-size: 36px;
 }
 
+blockquote {
+	background: #ccc;
+	font-family: monospace;
+	padding: 6px 6px 6px 20px;
+	border-radius: 2px;
+}
+
 /* =========================
 MODULES
 ========================= */

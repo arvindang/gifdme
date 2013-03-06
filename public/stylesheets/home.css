@@ -5,9 +5,11 @@ Homepage
 .main {
 	margin: 60px 0 30px 0;
 	height: 480px;
-	/*width: 100%;*/
-	background-image: url(../img/tumblr_mj0ph5vhut1rfjkwpo1_500.gif);
-	background-size: cover;
+	background: url(../img/tumblr_mj0ph5vhut1rfjkwpo1_500.gif) no-repeat center center;
+	-webkit-background-size: cover;
+	   -moz-background-size: cover;
+       -o-background-size: cover;
+          background-size: cover;
 	color: white;
 	text-align: center;
 }
@@ -97,7 +99,46 @@ Homepage
 }
 
 .info {
-	margin-top: 30px;
+	margin: 60px auto;
+}
+
+.info p {
+	margin: 10px 0;
+}
+
+.howto {
+	width: 660px;
+	margin: 0 auto;
+}
+
+.howto h2 {
+	text-align: center;
+}
+
+.howto ul {
+	margin-left: 30px;
+}
+
+.team {
+	text-align: center;
+	margin-top: 60px;
+}
+
+.team h2 {
+	margin-bottom: 20px;
+}
+
+.team-images {
+	width: 820px;
+	margin: 0 auto;
+}
+
+.team a {
+	float: left;
+}
+
+.percent {
+	font-weight: bold;
 }
 
 /* =========================
@@ -126,14 +167,35 @@ Mailchimp
 }
 
 
-
 /* =========================
 MEDIA QUERIES
 ========================= */
 
 @media screen and (max-width: 440px) {
+	.main {
+		margin-top: 0;
+		margin-bottom: 10px;
+	}
+
+	.main img {
+		margin: 20px 0;
+		width: 280px;
+	}
+
 	.main p {
 		line-height: 32px;
 		padding: 5px;
+	}
+
+	.main button {
+		margin-top: 24px;
+	}
+
+	.social {
+		margin-top: 10px;
+	}
+
+	.social a {
+		margin-bottom: 10px;
 	}
 }
