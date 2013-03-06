@@ -95,6 +95,10 @@ checkAuth = function(req,res) {
 
 };
 
+app.get('/', function(req,res) {
+	res.redirect('/home.html');
+});
+
 app.post('/t/send', function(req,res) {
 	// magic goes here
 
