@@ -5,9 +5,8 @@ Homepage
 .main {
 	margin: 60px 0 30px 0;
 	height: 480px;
-	width: 100%;
+	/*width: 100%;*/
 	background-image: url(../img/tumblr_mj0ph5vhut1rfjkwpo1_500.gif);
-	/*background-image: url(img/tumblr_mhgmt2JDRN1rfjkwpo1_500.gif);*/
 	background-size: cover;
 	color: white;
 	text-align: center;
@@ -96,6 +95,14 @@ Homepage
        -o-transform: translateY(3px);
           transform: translateY(3px);
 }
+
+.info {
+	margin-top: 30px;
+}
+
+/* =========================
+Mailchimp
+========================= */
 
 #mc_embed_signup {
 	margin: 0 auto;

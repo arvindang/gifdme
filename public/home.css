@@ -20,19 +20,7 @@ $darker-coral: #ff4835;
 GLOBAL
 ========================= */
 
-body {
-	font: 14px/1.25 "Helvetica Neue", sans-serif;
-  /*text-shadow: 0 1px 0 #fff;*/
-}
 
-h1, h2, h3 {
-	font-family: 'Josefin Sans', "Helvetica Neue", sans-serif;
-}
-
-
-h1 {
-	font-size: 36px;
-}
 
 /* =========================
 MODULES
@@ -127,6 +115,10 @@ Homepage
 
 .twitter-logo {
 	padding-left: 26px;
+}
+
+.info {
+	margin-top: 60px;
 }
 
 /* =========================
