@@ -95,7 +95,7 @@ checkAuth = function(req,res) {
 
 };
 
-app.get('/', function(req,res) {
+app.get('/index.html', function(req,res) {
 	res.redirect('/home.html');
 });
 
