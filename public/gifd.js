@@ -7,7 +7,9 @@ var currentTag = "",
 
 // document ready
 $(function() {
-	$('.slider').hide().addEventListener('slide', setCurrentGif);
+	$('.slider').hide();
+	
+	//	$('.slider').addEventListener('slide', setCurrentGif);
 	
 	// Tweet entry form
 	$(".tweet-form textarea").keyup(function() {
