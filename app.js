@@ -40,7 +40,7 @@ app.get('/g/fetch/tag/:tag', function(req,res) {
 	});
 });
 app.get('/g/fetch/tag/:tag/:pos/:count', function(req,res) {
-	console.log(req);
+	//console.log(req);
 	db.findByTag(req.params.tag, req.params.pos, req.params.count, function(gif) {
 		if (gif) {
 			res.send(gif);

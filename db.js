@@ -84,6 +84,7 @@ exports.findByTag = function(tag, pos, count, cb) {
 				console.log("Error with findByTag:"+err);
 				cb(null);
 			} else {
+				console.log(docd.length)
 				cb(docd);
 			}
 		});
