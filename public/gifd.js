@@ -20,6 +20,7 @@ $(function() {
 				$(".slider").show();
 				getGifsByTag(currentTag,0,10,function(resp) {
 					$("ul.items li").remove();
+					selectedGif = 0;
 					for (var i = 0, ii = resp.length; i < ii; i++) {
 						var gif = resp[i];
 						console.log(gif);
@@ -28,6 +29,7 @@ $(function() {
 				});
 			} else {
 				$(".slider").hide();
+				selectedGif = -1;
 			}
 		}
 	});
