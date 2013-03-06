@@ -34,7 +34,7 @@ $(function() {
 			console.log("Response: "+resp);
 		});
 	});
-	
+	console.log('it definitely went over the code');
 	// GIF browsing UI
 	// !?@#@$
 	
