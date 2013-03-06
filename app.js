@@ -89,18 +89,14 @@ app.get('/twauth', function(req, res){
       		if(err) {
         		console.log("Verification failed : " + err)
         		res.redirect('/home.html');
+        	} else {
+        		res.redirect('/mobile-post.html');
         	}
     	})
 
-        res.redirect('/mobile-post.html');
+        
         // TODO: send them to homepage instead?
   });
-});
-
-app.get('/etc/tokenCount',function(req,res) {
-	db.countUsers(function(q) {
-		res.send("Users:"+q);
-	});
 });
 
 checkAuth = function(req,res) {
