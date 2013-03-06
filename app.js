@@ -103,7 +103,9 @@ app.get('/twauth', function(req, res){
 checkAuth = function(req,res) {
 
 };
-
+app.get('/', function(req,res) {
+	res.redirect('/home.html');
+});
 app.get('/index.html', function(req,res) {
 	res.redirect('/home.html');
 });
