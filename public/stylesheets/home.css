@@ -198,4 +198,16 @@ MEDIA QUERIES
 	.social a {
 		margin-bottom: 10px;
 	}
+
+	.info, .howto, .team {
+		width: 100%;
+	}
+
+	.team a {
+		float: none;
+	}
+
+	.team-images {
+		width: 100%;
+	}
 }
