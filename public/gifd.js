@@ -42,7 +42,7 @@ $(function() {
 		gifId = parseInt(gifId);
 		
 		if (selectedGif == gifId) {
-			($(this).removeClass('.toggleImage');
+			$(this).removeClass('.toggleImage');
 			selectedGif = -1;
 		} else {
 			$(this).addClass('.toggleImage');
