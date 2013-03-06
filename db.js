@@ -1,6 +1,6 @@
 // Gifdme db code
 // Author: Sean Muron
-// Last modified: 3/4/13
+// Last modified: 3/6/13
 
 var mongo = require('mongodb');
 

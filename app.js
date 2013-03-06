@@ -1,6 +1,6 @@
 // Gifdme main app
 // Code by: S. Muron
-// Last changed: 3/4/13
+// Last changed: 3/6/13
 var db = require('./db.js');
 var express = require('express');
 var twitter = require('./twitter.js');
@@ -69,6 +69,11 @@ app.get('/twauth', function(req,res) {
 app.post('/t/send', function(req,res) {
 	// magic goes here
 	
+	//db.updateGif uses++
+	
+	// twitter.updateStatus(req.body.text, function() {
+	
+	});
 	res.send('unimplemented');
 });
 
