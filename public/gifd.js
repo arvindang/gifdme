@@ -95,14 +95,17 @@ function startTwitterAuth() {
 }
 
 function submitTweet(callback) {
-	if (!txt || selectedGif == -1 || txt.length>112) {
-		alert('something went wrong');
-		return;
-	}
-	
 	var txt = $(".tweet-form textarea").val(),
 		link = $("#gif"+selectedGif).attr("src");
 		txt = txt + " " + link + " (gifdme)";
+		
+	if (!txt || selectedGif == -1 || txt.length>112) {
+		console.log(txt.length)
+		console.log(link);
+		alert('something went wrong');
+		return;
+	}
+		
 	// TODO vet the link, tweet length etc
 	$.post(endpoint+"/t/send", {'status': txt}, function(res) {
 		console.log(res);
