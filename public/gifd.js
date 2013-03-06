@@ -103,9 +103,8 @@ function startTwitterAuth() {
 }
 
 
-function setCurrentGif(err, slider) {
+function setCurrentGif(slider) {
 	console.log(slider);
-	console.log(err);
 	selectedGif = slider.detail.slideNumber;
 }
 
