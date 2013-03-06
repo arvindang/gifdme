@@ -26,7 +26,9 @@ $(function() {
 	});
 	
 	// Submit Tweet
-	$("#sendTweet").click(function(e) {
+	console.log("FFFS");
+	$("#sendTweet").click(function() {
+		console.log("FFSS");
 		submitTweet(function(resp) {
 			console.log("Response: "+resp);
 		});
