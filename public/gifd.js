@@ -111,9 +111,15 @@ function submitTweet(callback) {
 	}
 		
 	// TODO vet the link, tweet length etc
-	$.post(endpoint+"/t/send", {'status': txt}, function(res) {
+	$.post(endpoint+"/t/send", {'status': txt}, function(err, res) {
 		console.log(res);
-		callback();
+		if (err) {
+			console.log(err);
+			callback('error')
+		} else {
+			callback();
+			window.location.reload();
+		}
 	});
 }
 
