@@ -15,7 +15,9 @@ app.use('/img', express.static(__dirname + '/public/img') );
 app.use('/touch-icons', express.static(__dirname + '/public/touch-icons') );
 app.use('/stylesheets', express.static(__dirname + '/public/stylesheets') );
 app.use(express.bodyParser());
-app.use(express.cookieParser());
+app.use(express.methodOverride());
+app.use(express.cookieParser('secretsession'));
+app.use(express.session());
 //app.engine('haml', r);
 // middleware goes here
 
@@ -63,24 +65,16 @@ app.post('/g/admin/new', function(req,res) {
 });
 
 app.get('/twauth', function(req,res) {
-	twitter.verifyCredentials(function(data) {
-        console.log(util.inspect(data));
-    })
+	
+	var path = url.parse(req.url, true);
+	twitter.login(path.pathname,"/twitter_callback")(req,res);
+	
 });
 app.post('/t/send', function(req,res) {
 	// magic goes here
-	console.log(req.body);
-	//db.updateGif uses++
-	twitter.login(function(doop) {
-	twitter.verifyCredentials(function(result) {
-		
-		twitter.updateStatus(req.body.status, function(err, res) {
-			console.log(err);
-			console.log(res);
-		});
-	});
-	});
-	res.send('unimplemented');
+
+	res.send('unimpl');
+
 });
 
 app.get('/g/admin/delete/:url', function(req,res) {
