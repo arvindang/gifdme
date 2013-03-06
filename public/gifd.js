@@ -57,7 +57,7 @@ $(function() {
 	$(".tag-click").click(function() {
 		currentTag = $(this).val();
 		overrideTag = true;
-		getGifsByTag(currentTag,0,10,function(resp) {
+		getGifsByTag(currentTag,0,4,function(resp) {
 			for (var i = 0, ii = resp.length; i < ii; i++) {
 				var gif = resp[i];
 				$("ul.items").empty().append('<li class="item"><div class="item-image"><img src="'+gif.url+'"></div><p><strong>Tags:</strong><ul class="tag-list"><li><a href="#">Celebrate</a></li><li><a href="#">Happy</a></li><li><a href="#">Funny</a></li></ul></p></li>');
@@ -70,10 +70,11 @@ $(function() {
 		$("#tweetfield").change();
 	});
 
-
+	/*
 	$("ul.items > img").lazyload({
 		container: $("ul.items")
 	});
+	*/
 
 });
 
@@ -148,7 +149,7 @@ function lazyGifList() {
 	var gifCount = $("ul.items li").length;
 	if (listPosition >= gifCount-3) {
 		// near end of list, load more items
-		getGifsByTag(currentTag,gifCount,10,function(resp) {
+		getGifsByTag(currentTag,gifCount,4,function(resp) {
 			for (var i = 0, ii = resp.length; i < ii; i++) {
 				var gif = resp[i];
 				$("ul.items").append('<li class="item"><div class="item-image"><img id="gif'+(gifCount+i)+'"src="'+gif.url+'"></div><p><strong>Tags:</strong><ul class="tag-list"><li><a href="#">Celebrate</a></li><li><a href="#">Happy</a></li><li><a href="#">Funny</a></li></ul></p></li>');
