@@ -1,11 +1,14 @@
 // Some script scope variables
 var currentTag = "",
 	overrideTag = false,
-	listPosition = 0;
+	listPosition = 0,
 	selectedGif = -1;
+//slideNumber = Math[round](getScroll() / ( scrollableArea / slider.children.length) );
+
 // document ready
 $(function() {
-	$('.slider').hide();
+	$('.slider').hide().addEventListener('slide', setCurrentGif);
+	
 	// Tweet entry form
 	$(".tweet-form textarea").keyup(function() {
 		var newTag = tagFromTweet($(this).val());
@@ -43,7 +46,6 @@ $(function() {
 		var i = $(this);
 		var gifId = i.attr("id").substring(3);
 		gifId = parseInt(gifId);
-
 		if (selectedGif == gifId) {
 			i.removeClass('toggleImage');
 			selectedGif = -1;
@@ -97,7 +99,13 @@ function startTwitterAuth() {
 	window.location.href = "/signin";
 }
 
+
+function setCurrentGif(slider) {
+	selectedGif = slider.slideNumber;
+}
+
 function submitTweet(callback) {
+
 	var txt = $(".tweet-form textarea").val(),
 		link = $("#gif"+selectedGif).attr("src");
 		txt = txt + " " + link + " @gifdme";
