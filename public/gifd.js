@@ -118,7 +118,7 @@ function submitTweet(callback) {
 			callback('error')
 		} else {
 			callback();
-			window.location.reload();
+			window.location.href = './mobile-post.html';
 		}
 	});
 }
