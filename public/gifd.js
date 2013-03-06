@@ -2,7 +2,7 @@
 var currentTag = "",
 	overrideTag = false,
 	listPosition = 0;
-
+	selectedGif = -1;
 // document ready
 $(function() {
 	$('.slider').hide();
@@ -16,7 +16,7 @@ $(function() {
 				getGifsByTag(currentTag,0,10,function(resp) {
 					for (var i = 0, ii = resp.length; i < ii; i++) {
 						var gif = resp[i];
-						$("ul.items").append('<li class="item"><div class="item-image"><img src="'+gif.url+'"></div><p><strong>Tags:</strong><ul class="tag-list"><li><a href="#">Celebrate</a></li><li><a href="#">Happy</a></li><li><a href="#">Funny</a></li></ul></p></li>');
+						$("ul.items").append('<li class="item"><div class="item-image"><img id="gif'+i+'" src="'+gif.url+'"></div><p><strong>Tags:</strong><ul class="tag-list"><li><a href="#">Celebrate</a></li><li><a href="#">Happy</a></li><li><a href="#">Funny</a></li></ul></p></li>');
 					}
 				});
 			} else {
@@ -36,6 +36,20 @@ $(function() {
 	});
 	// GIF browsing UI
 	// !?@#@$
+	
+	$(".item-image img").click(function() {
+		var gifId = $(this).attr("id").substring(3);
+		gifId = parseInt(gifId);
+		
+		if (selectedGif == gifId) {
+			($(this).removeClass('.toggleImage');
+			selectedGif = -1;
+		} else {
+			$(this).addClass('.toggleImage');
+			$("gif"+selectedGif).removeClass('.toggleImage');
+			selectedGif = gifId;
+		}
+	});
 	
 	// Tag click UI
 	$(".tag-click").click(function() {
@@ -79,9 +93,14 @@ function startTwitterAuth() {
 }
 
 function submitTweet(callback) {
+	if (!txt || selectedGif == -1 || txt.length>112) {
+		alert('something went wrong');
+		return;
+	}
+	
 	var txt = $(".tweet-form textarea").val(),
-		link = "http://i.imgur.com/jvYIj5Q.gif";
-		txt = txt + " " + link + " (via gifdme.com)";
+		link = $("#gif"+selectedGif).attr("src");
+		txt = txt + " " + link + " (gifdme)";
 	// TODO vet the link, tweet length etc
 	$.post(endpoint+"/t/send", {'status': txt}, function(res) {
 		console.log(res);
@@ -117,7 +136,7 @@ function lazyGifList() {
 		getGifsByTag(currentTag,gifCount,10,function(resp) {
 			for (var i = 0, ii = resp.length; i < ii; i++) {
 				var gif = resp[i];
-				$("ul.items").append('<li class="item"><div class="item-image"><img src="'+gif.url+'"></div><p><strong>Tags:</strong><ul class="tag-list"><li><a href="#">Celebrate</a></li><li><a href="#">Happy</a></li><li><a href="#">Funny</a></li></ul></p></li>');
+				$("ul.items").append('<li class="item"><div class="item-image"><img id="gif'+(gifCount+i)+'"src="'+gif.url+'"></div><p><strong>Tags:</strong><ul class="tag-list"><li><a href="#">Celebrate</a></li><li><a href="#">Happy</a></li><li><a href="#">Funny</a></li></ul></p></li>');
 			}
 		});
 	}
