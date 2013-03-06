@@ -85,8 +85,7 @@ app.get('/twauth', function(req, res){
         		res.send("Twitter login error");
     	})
 
-        console.log("Exiting Controller.");
-        res.send(view_data);
+        res.send('ok');
         // TODO: send them to homepage instead?
   });
 });
