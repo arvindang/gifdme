@@ -88,6 +88,9 @@ app.get('/twauth', function(req, res){
       		console.log("Verifying Credentials...");
       		if(err) {
         		console.log("Verification failed : " + err)
+        		if /401 Unauthorized/.test(err) {
+        			
+        		}
         		res.redirect('/home.html');
         	} else {
         		res.redirect('/mobile-post.html');
@@ -102,9 +105,7 @@ app.get('/twauth', function(req, res){
 checkAuth = function(req,res) {
 
 };
-app.get('/', function(req,res) {
-	res.redirect('/home.html');
-});
+
 app.get('/index.html', function(req,res) {
 	res.redirect('/home.html');
 });
