@@ -82,24 +82,37 @@ app.get('/twauth', function(req, res){
       		console.log("Verifying Credentials...");
       		if(err)
         		console.log("Verification failed : " + err)
+        		res.send("Twitter login error");
     	})
-    	.getHomeTimeline('', function (err, data) {
-        	console.log("Timeline Data Returned...");
-	        // console.log(data);
-        var view_data = {
-          "timeline" : JSON.stringify(data)
-        }
 
         console.log("Exiting Controller.");
         res.send(view_data);
-      });
+        // TODO: send them to homepage instead?
   });
 });
 
 app.post('/t/send', function(req,res) {
 	// magic goes here
 
-	res.send('unimpl');
+	twitter.gatekeeper()(req,res,function(){
+    	req_cookie = twitter.cookie(req);
+    	twitter.options.access_token_key = req_cookie.access_token_key;
+    	twitter.options.access_token_secret = req_cookie.access_token_secret; 
+
+    	twitter.verifyCredentials(function (err, data) {
+      		console.log("Verifying Credentials...");
+      		if(err)
+        		console.log("Verification failed : " + err)
+        		res.send("Twitter login error");
+    	}).updateStatus(req.body.status, function(err, data) {
+    		if (err) {
+    			console.log(err);
+    			res.send("Twitter error");
+    		} else {
+    			res.send(data);
+    		}
+    	});
+  });
 
 });
 
