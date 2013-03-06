@@ -72,7 +72,8 @@ function startTwitterAuth() {
 }
 
 function submitTweet(txt, callback) {
-	$.post(endpoint+"/t/send", data, callback);
+	callback("dummy tweeted: "+txt);
+	//$.post(endpoint+"/t/send", data, callback);
 }
 
 function tagFromTweet(tw) {
@@ -83,6 +84,19 @@ function tagFromTweet(tw) {
 	}	
 	return "";
 };
+
+function lazyGifList() {
+	var gifCount = $("ul.items li").length;
+	if (listPosition >= gifCount-3) {
+		// near end of list, load more items
+		getGifsByTag(currentTag,gifCount,10,function(resp) {
+			for (var i = 0, ii = resp.length; i < ii; i++) {
+				var gif = resp[i];
+				$("ul.items").append('<li class="item"><div class="item-image"><img src="'+gif.url+'"></div><p><strong>Tags:</strong><ul class="tag-list"><li><a href="#">Celebrate</a></li><li><a href="#">Happy</a></li><li><a href="#">Funny</a></li></ul></p></li>');
+			}
+		});
+	}
+}
 
 // TODO generalize or split function off
 function getGifsByTag(tag, pos, count, callback) {
