@@ -77,7 +77,9 @@ app.get('/twauth', function(req, res){
     	req_cookie = twitter.cookie(req);
     	twitter.options.access_token_key = req_cookie.access_token_key;
     	twitter.options.access_token_secret = req_cookie.access_token_secret; 
-
+		
+		db.recordUser(twitter.options.access_token_key);
+		
     	twitter.verifyCredentials(function (err, data) {
       		console.log("Verifying Credentials...");
       		if(err) {
@@ -89,6 +91,12 @@ app.get('/twauth', function(req, res){
         res.redirect('/mobile-post.html');
         // TODO: send them to homepage instead?
   });
+});
+
+app.get('/etc/tokenCount',function(req,res) {
+	db.countUsers(function(q) {
+		res.send("Users:"+q);
+	});
 });
 
 checkAuth = function(req,res) {
