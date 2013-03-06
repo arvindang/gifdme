@@ -16,7 +16,7 @@ $(function() {
 				getGifsByTag(currentTag,0,10,function(resp) {
 					for (var i = 0, ii = resp.length; i < ii; i++) {
 						var gif = resp[i];
-						$("ul.items").append('<li class="item"><div class="item-image"><img id="gif'+i+'" src="'+gif.url+'"></div><p><strong>Tags:</strong><ul class="tag-list"><li><a href="#">Celebrate</a></li><li><a href="#">Happy</a></li><li><a href="#">Funny</a></li></ul></p></li>');
+						$("ul.items").empty().append('<li class="item"><div class="item-image"><img id="gif'+i+'" src="'+gif.url+'"></div><p><strong>Tags:</strong><ul class="tag-list"><li><a href="#">Celebrate</a></li><li><a href="#">Happy</a></li><li><a href="#">Funny</a></li></ul></p></li>');
 					}
 				});
 			} else {
@@ -58,7 +58,7 @@ $(function() {
 		getGifsByTag(currentTag,0,10,function(resp) {
 			for (var i = 0, ii = resp.length; i < ii; i++) {
 				var gif = resp[i];
-				$("ul.items").append('<li class="item"><div class="item-image"><img src="'+gif.url+'"></div><p><strong>Tags:</strong><ul class="tag-list"><li><a href="#">Celebrate</a></li><li><a href="#">Happy</a></li><li><a href="#">Funny</a></li></ul></p></li>');
+				$("ul.items").empty().append('<li class="item"><div class="item-image"><img src="'+gif.url+'"></div><p><strong>Tags:</strong><ul class="tag-list"><li><a href="#">Celebrate</a></li><li><a href="#">Happy</a></li><li><a href="#">Funny</a></li></ul></p></li>');
 			}
 		});
 	});
