@@ -26,7 +26,8 @@ $(function() {
 	});
 	
 	// Submit Tweet
-	$(".posttotwitter").click(function() {
+	$("#sendTweet").click(function(e) {
+		e.preventDefault();
 		submitTweet(function(resp) {
 			console.log("Response: "+resp);
 		});
