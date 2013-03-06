@@ -75,7 +75,7 @@ function submitTweet(callback) {
 	var txt = $("#tweetfield").val(),
 		link = "http://i.imgur.com/jvYIj5Q.gif";
 		txt = txt + " " + link + " (via gifdme.com)";
-	// vet the link
+	// TODO vet the link, tweet length etc
 
 	$.post(endpoint+"/t/send", {'status': txt}, function(res) {
 		console.log(res);
