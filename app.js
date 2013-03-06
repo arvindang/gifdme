@@ -68,15 +68,16 @@ app.get('/twauth', function(req,res) {
 });
 app.post('/t/send', function(req,res) {
 	// magic goes here
-	
+	console.log(req.body);
 	//db.updateGif uses++
-	
+	twitter.login(function(doop) {
 	twitter.verifyCredentials(function(result) {
-		console.log(result);
+		
 		twitter.updateStatus(req.body.status, function(err, res) {
 			console.log(err);
 			console.log(res);
 		});
+	});
 	});
 	res.send('unimplemented');
 });
