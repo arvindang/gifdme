@@ -14,10 +14,11 @@ $(function() {
 			if (currentTag != "") {
 				$(".slider").show();
 				getGifsByTag(currentTag,0,10,function(resp) {
+					$("ul.items").empty();
 					for (var i = 0, ii = resp.length; i < ii; i++) {
 						var gif = resp[i];
 						console.log(gif);
-						$("ul.items").empty().append('<li class="item"><div class="item-image"><img id="gif'+i+'" src="'+gif.url+'"></div></li>');
+						$("ul.items").append('<li class="item"><div class="item-image"><img id="gif'+i+'" src="'+gif.url+'"></div></li>');
 					}
 				});
 			} else {
@@ -58,9 +59,10 @@ $(function() {
 		currentTag = $(this).val();
 		overrideTag = true;
 		getGifsByTag(currentTag,0,4,function(resp) {
+			$("ul.items").empty()
 			for (var i = 0, ii = resp.length; i < ii; i++) {
 				var gif = resp[i];
-				$("ul.items").empty().append('<li class="item"><div class="item-image"><img src="'+gif.url+'"></div></li>');
+				$("ul.items").append('<li class="item"><div class="item-image"><img src="'+gif.url+'"></div></li>');
 			}
 		});
 	});
@@ -147,7 +149,7 @@ function insertGif(u, t, callback) {
 
 function lazyGifList() {
 	var gifCount = $("ul.items li").length;
-	if (listPosition >= gifCount-3) {
+	if (listPosition >= gifCount-2) {
 		// near end of list, load more items
 		getGifsByTag(currentTag,gifCount,4,function(resp) {
 			for (var i = 0, ii = resp.length; i < ii; i++) {
