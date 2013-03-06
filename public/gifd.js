@@ -97,7 +97,7 @@ function startTwitterAuth() {
 function submitTweet(callback) {
 	var txt = $(".tweet-form textarea").val(),
 		link = $("#gif"+selectedGif).attr("src");
-		txt = txt + " " + link + " (gifdme)";
+		txt = txt + " " + link + " @gifdme";
 		
 	if (!txt || selectedGif == -1 || txt.length>112) {
 		console.log(txt.length)
