@@ -96,8 +96,5 @@ app.get('/g/special/randomTop', function(req,res) {
 	res.send("not implemented");
 });
 
-
-
-
-app.listen(80);
-console.log("Listening on 80.");
+app.listen(8080);
+console.log("Listening on 8080.");
