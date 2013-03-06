@@ -18,7 +18,7 @@ mongo.Db.connect(mongoUri, function(err, p_client) {
 
 exports.recordUser = function(user, cb) {
 	dbclient.collection('users', function(err, collection) {
-		collection.update({'user':user},{'user':user}, {upsert: true} function(err, docs) {
+		collection.update({'user':user},{'user':user,'lastLogin':Date().getTime()}, {upsert: true}, function(err, docs) {
 			if (err) {
 				console.log(err);
 				cb(false); // tell express handler it failed
