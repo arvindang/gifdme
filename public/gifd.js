@@ -25,7 +25,7 @@ $(function() {
 			}
 		}
 	});
-	
+
 	// Submit Tweet
 
 	$("#sendTweet").on('click',function(e) {
@@ -37,12 +37,12 @@ $(function() {
 	});
 	// GIF browsing UI
 	// !?@#@$
-	
+
 	$("ul.items").on('click', '.item-image img', function() {
 		var i = $(this);
 		var gifId = i.attr("id").substring(3);
 		gifId = parseInt(gifId);
-		
+
 		if (selectedGif == gifId) {
 			i.removeClass('toggleImage');
 			selectedGif = -1;
@@ -52,7 +52,7 @@ $(function() {
 			selectedGif = gifId;
 		}
 	});
-	
+
 	// Tag click UI
 	$(".tag-click").click(function() {
 		currentTag = $(this).val();
@@ -64,12 +64,12 @@ $(function() {
 			}
 		});
 	});
-	
-	$(".cancel-tag-click").click(function() { 
+
+	$(".cancel-tag-click").click(function() {
 		overrideTag = false;
 		$("#tweetfield").change();
 	});
-	
+
 
 	$("ul.items > img").lazyload({
 		container: $("ul.items")
@@ -97,29 +97,39 @@ function startTwitterAuth() {
 function submitTweet(callback) {
 	var txt = $(".tweet-form textarea").val(),
 		link = $("#gif"+selectedGif).attr("src");
-		txt = txt + " " + link + " (gifdme)";
-		
-	if (!txt || selectedGif == -1 || txt.length>112) {
+		txt = txt + " " + link + " @gifdme";
+
+	if (!txt || selectedGif == -1 || txt.length>113) {
 		console.log(txt.length)
 		console.log(link);
-		alert('something went wrong');
+		if (seletedGif == -1) {
+			alert('select a gif, first!');
+		} else {
+			alert('something went wrong');
+		}
 		return;
 	}
-		
+
 	// TODO vet the link, tweet length etc
-	$.post(endpoint+"/t/send", {'status': txt}, function(res) {
+	$.post(endpoint+"/t/send", {'status': txt}, function(err, res) {
 		console.log(res);
-		callback();
+		if (err) {
+			console.log(err);
+			callback('error')
+		} else {
+			callback();
+			window.location.href = './mobile-post.html';
+		}
 	});
 }
 
 function tagFromTweet(tw) {
 	// Find tagged emotions in tweets
-	
+
 	for (var i = 0, ii = static_tags.length; i < ii; i++) {
 		var re = new RegExp("[^\b]?[%]"+static_tags[i]+"[\b$]?","gim");
 		if (re.test(tw) ) { return static_tags[i]; }
-	}	
+	}
 	return "";
 };
 
@@ -128,7 +138,7 @@ function insertGif(u, t, callback) {
 		url: u,
 		tags: [t]
 	}
-	
+
 	$.post(endpoint+"/g/new", gif, function(res) {
 		callback();
 	});

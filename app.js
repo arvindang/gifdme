@@ -70,6 +70,8 @@ app.get('/signin', function(req,res) {
 	var path = url.parse(req.url, true);
 	twitter.login(path.pathname,"/twauth")(req,res);
 });
+
+var loginsThisSession = 0;
 app.get('/twauth', function(req, res){
 	 console.log("Sucessfully Authenticated with Twitter...")
 	 
@@ -77,16 +79,23 @@ app.get('/twauth', function(req, res){
     	req_cookie = twitter.cookie(req);
     	twitter.options.access_token_key = req_cookie.access_token_key;
     	twitter.options.access_token_secret = req_cookie.access_token_secret; 
-
+		
+		//db.recordUser(twitter.options.access_token_key);
+		loginsThisSession++; // prolly works bad with heroku
+		console.log("L Count: "+loginsThisSession);
+		
     	twitter.verifyCredentials(function (err, data) {
       		console.log("Verifying Credentials...");
       		if(err) {
         		console.log("Verification failed : " + err)
-        		res.redirect('/');
+        		
+        		res.redirect('/home.html');
+        	} else {
+        		res.redirect('/mobile-post.html');
         	}
     	})
 
-        res.redirect('/mobile-post.html');
+        
         // TODO: send them to homepage instead?
   });
 });
@@ -95,7 +104,7 @@ checkAuth = function(req,res) {
 
 };
 
-app.get('/', function(req,res) {
+app.get('/index.html', function(req,res) {
 	res.redirect('/home.html');
 });
 

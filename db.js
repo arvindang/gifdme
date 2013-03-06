@@ -16,6 +16,14 @@ mongo.Db.connect(mongoUri, function(err, p_client) {
 });
 
 
+exports.recordUser = function(user, cb) {
+	cb(0);
+};
+
+exports.countUsers = function(cb) {
+	cb(0);
+}
+
 exports.insertGif = function(gif, url, cb) {
 		dbclient.collection('gifs', function(err, collection) {
 			collection.insert(gif, function(err, docs) {

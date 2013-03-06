@@ -1,6 +1,0 @@
-// regex ideas
-
-'smile' -> ' smil'
-'happy' -> ' happ[iy]'
-'sad' -> ' sad(d|(ly))'
-'laugh' -> ' lol' | ' laugh' | 'rofl' | 'lmao'

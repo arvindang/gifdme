@@ -48,3 +48,7 @@
 .bar-title .button-next:active:before {
   background-color: #f73823;
 }
+
+.toggleImage {
+	border: 1px solid red;
+}
