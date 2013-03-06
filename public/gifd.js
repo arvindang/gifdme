@@ -99,10 +99,10 @@ function tagFromTweet(tw) {
 	return "";
 };
 
-function insertGif(callback) {
+function insertGif(u, t, callback) {
 	var gif = {
-		url: $("#urlEntry").val(),
-		tags: [$("#tagSet").val()]
+		url: u,
+		tags: [t]
 	}
 	
 	$.post(endpoint+"/g/new", gif, function(res) {
