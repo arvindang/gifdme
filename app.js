@@ -71,7 +71,8 @@ app.post('/t/send', function(req,res) {
 	
 	//db.updateGif uses++
 	
-	twitter.verifyCredentials(function() {
+	twitter.verifyCredentials(function(result) {
+		console.log(result);
 		twitter.updateStatus(req.body.status, function(err, res) {
 			console.log(err);
 			console.log(res);
