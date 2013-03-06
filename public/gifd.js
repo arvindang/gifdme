@@ -8,7 +8,7 @@ $(function() {
 	
 	// Tweet entry form
 	$("#tweetfield").change(function() {
-		var newTag = this.val();
+		var newTag = $(this).val();
 		if (currentTag != newTag && !overrideTag) {
 			currentTag = newTag;
 			getGifsByTag(currentTag,0,10,function(resp) {
@@ -54,7 +54,7 @@ $(function() {
 
 });
 
-var endpoint = "http://localhost:8080";
+var endpoint = "";
 var static_tags = [
 	"happy",
 	"sad",
