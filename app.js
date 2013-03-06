@@ -73,7 +73,7 @@ app.post('/t/send', function(req,res) {
 	
 	// twitter.updateStatus(req.body.text, function() {
 	
-	});
+	//});
 	res.send('unimplemented');
 });
 
