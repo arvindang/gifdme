@@ -72,11 +72,11 @@ $(function() {
 		$("#tweetfield").change();
 	});
 
-	/*
+	
 	$("ul.items > img").lazyload({
 		container: $("ul.items")
 	});
-	*/
+	
 
 });
 
