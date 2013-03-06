@@ -70,6 +70,8 @@ app.get('/signin', function(req,res) {
 	var path = url.parse(req.url, true);
 	twitter.login(path.pathname,"/twauth")(req,res);
 });
+
+var loginsThisSession = 0;
 app.get('/twauth', function(req, res){
 	 console.log("Sucessfully Authenticated with Twitter...")
 	 
@@ -78,7 +80,9 @@ app.get('/twauth', function(req, res){
     	twitter.options.access_token_key = req_cookie.access_token_key;
     	twitter.options.access_token_secret = req_cookie.access_token_secret; 
 		
-		db.recordUser(twitter.options.access_token_key);
+		//db.recordUser(twitter.options.access_token_key);
+		loginsThisSession++; // prolly works bad with heroku
+		console.log("L Count: "+loginsThisSession);
 		
     	twitter.verifyCredentials(function (err, data) {
       		console.log("Verifying Credentials...");

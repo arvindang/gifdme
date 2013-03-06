@@ -17,24 +17,11 @@ mongo.Db.connect(mongoUri, function(err, p_client) {
 
 
 exports.recordUser = function(user, cb) {
-	dbclient.collection('users', function(err, collection) {
-		collection.update({'user':user},{'user':user}, {upsert: true}, function(err, docs) {
-			if (err) {
-				console.log(err);
-				cb(false); // tell express handler it failed
-			} else {
-				cb(true); // tell express it succeeded
-			}
-		});
-	});
+	cb(0);
 };
 
 exports.countUsers = function(cb) {
-	dbclient.collection('users', function(err, collection) {
-		collection.count(function(r) {
-			cb(r);
-		});
-	});
+	cb(0);
 }
 
 exports.insertGif = function(gif, url, cb) {
