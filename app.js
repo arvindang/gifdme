@@ -1,9 +1,10 @@
 // Gifdme main app
 // Code by: S. Muron
-// Last changed: 3/4/13
+// Last changed: 3/6/13
 var db = require('./db.js');
 var express = require('express');
-var twitter = require('./twitter.js');
+var twitter = require('./twitter.js').twitter;
+var url = require('url');
 // TODO: request and record the t.co url length (??)
 // tweet should have that much room for the link (and one whitespace)
 
@@ -15,6 +16,9 @@ app.use('/img', express.static(__dirname + '/public/img') );
 app.use('/touch-icons', express.static(__dirname + '/public/touch-icons') );
 app.use('/stylesheets', express.static(__dirname + '/public/stylesheets') );
 app.use(express.bodyParser());
+app.use(express.methodOverride());
+app.use(express.cookieParser('secretsession'));
+app.use(express.session());
 //app.engine('haml', r);
 // middleware goes here
 
@@ -46,17 +50,7 @@ app.get('/g/fetch/tag/:tag/:pos/:count', function(req,res) {
 	});
 });
 
-app.get('/g/flag/:id', function(req,res) {
-	res.send('not implemented');
-});
-
-app.get('/g/special/randomTop', function(req,res) {
-	// FIND BY SUPER COOL QUERY
-	// then grab a random index and dump it out
-	res.send("not implemented");
-});
-
-app.post('/g/admin/new', function(req,res) {
+app.post('/g/new', function(req,res) {
 	/*
 	* Expects JSON:
 	* url : string
@@ -71,6 +65,57 @@ app.post('/g/admin/new', function(req,res) {
 	});
 });
 
+app.get('/signin', function(req,res) {
+	
+	var path = url.parse(req.url, true);
+	twitter.login(path.pathname,"/twauth")(req,res);
+});
+app.get('/twauth', function(req, res){
+	 console.log("Sucessfully Authenticated with Twitter...")
+	 
+	twitter.gatekeeper()(req,res,function(){
+    	req_cookie = twitter.cookie(req);
+    	twitter.options.access_token_key = req_cookie.access_token_key;
+    	twitter.options.access_token_secret = req_cookie.access_token_secret; 
+
+    	twitter.verifyCredentials(function (err, data) {
+      		console.log("Verifying Credentials...");
+      		if(err)
+        		console.log("Verification failed : " + err)
+        		res.send("Twitter login error");
+    	})
+
+        res.send('ok');
+        // TODO: send them to homepage instead?
+  });
+});
+
+app.post('/t/send', function(req,res) {
+	// magic goes here
+
+	twitter.gatekeeper()(req,res,function(){
+    	req_cookie = twitter.cookie(req);
+    	twitter.options.access_token_key = req_cookie.access_token_key;
+    	twitter.options.access_token_secret = req_cookie.access_token_secret; 
+
+    	twitter.verifyCredentials(function (err, data) {
+      		console.log("Verifying Credentials...");
+      		if(err) {
+        		console.log("Verification failed : " + err)
+        		res.send("Twitter login error");
+        	}
+    	}).updateStatus(req.body.status, function(err, data) {
+    		if (err) {
+    			console.log(err);
+    			res.send("Twitter error");
+    		} else {
+    			res.send(data);
+    		}
+    	});
+  });
+
+});
+
 app.get('/g/admin/delete/:url', function(req,res) {
 	// check if logged in as admin 
 	// if so: else berate them + increase suspicion vs user/IP (for scaling / security)
@@ -81,14 +126,14 @@ app.get('/g/admin/delete/:url', function(req,res) {
 	// }
 	res.send("not implemented");
 });
-
-
-
-app.post('/t/send', function(req,res) {
-	// magic goes here
-	
-	res.send('unimplemented');
+app.get('/g/flag/:id', function(req,res) {
+	res.send('not implemented');
+});
+app.get('/g/special/randomTop', function(req,res) {
+	// FIND BY SUPER COOL QUERY
+	// then grab a random index and dump it out
+	res.send("not implemented");
 });
 
-app.listen(8080);
-console.log("Listening on 8080.");
+app.listen(process.env.PORT);
+console.log("Listening on HEROKU PORT.");

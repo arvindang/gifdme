@@ -1,0 +1,31 @@
+{
+  "name": "gifdme",
+  "version": "0.0.1",
+  "description": "GifdMe StartupBus 2013 MidWest",
+  "main": "app.js",
+  "dependencies": {
+    "express": "~3.1.0",
+    "mongo": "~0.1.0",
+    "mongoose": "~3.5.7",
+    "mu2": "~0.5.17",
+    "nano": "~3.3.7",
+    "haml": "~0.4.3",
+    "mongodb": "~1.2.13",
+    "hamljs": "~0.6.1",
+    "ntwitter": "~0.5.0"
+  },
+  "engines": {
+    "node": "0.8.21",
+    "npm": "1.2.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arvindang/gifdme.git"
+  },
+  "author": "Sean Muron, Arvin Dang, Catie Moran",
+  "license": "CC BY NC SA"
+}

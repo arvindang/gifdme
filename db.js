@@ -1,21 +1,17 @@
 // Gifdme db code
 // Author: Sean Muron
-// Last modified: 3/4/13
+// Last modified: 3/6/13
 
 var mongo = require('mongodb');
 
-var client = new mongo.Db('gifdme', new mongo.Server("127.0.0.1", 27017, {}), {w: 1});
+var mongoUri = process.env.MONGOLAB_URI || 
+  process.env.MONGOHQ_URL || 
+  'mongodb://localhost/gifdme'; 
 
-/*
-client.open(function(err, p_client) {
-	client.collection('gifs', function(err, collection) {
-	
-	});
-});
-*/
+
 
 var dbclient; 
-client.open(function(err, p_client) {
+mongo.Db.connect(mongoUri, function(err, p_client) {
 	dbclient = p_client;
 });
 

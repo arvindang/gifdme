@@ -1,0 +1,7 @@
+<html>
+<head>
+<script src="jquery.js"></script>
+<script src="lazyload.js"></script>
+<script src="gifd.js"></script>
+</head>
+<body>

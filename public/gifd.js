@@ -8,7 +8,7 @@ $(function() {
 	
 	// Tweet entry form
 	$("#tweetfield").change(function() {
-		var newTag = this.val();
+		var newTag = tagFromTweet($(this).val());
 		if (currentTag != newTag && !overrideTag) {
 			currentTag = newTag;
 			getGifsByTag(currentTag,0,10,function(resp) {
@@ -22,7 +22,7 @@ $(function() {
 	
 	// Submit Tweet
 	$("#submittweet").click(function() {
-		submitTweet($(this).val(), function(resp) {
+		submitTweet(function(resp) {
 			console.log("Response: "+resp);
 		});
 	});
@@ -54,7 +54,7 @@ $(function() {
 
 });
 
-var endpoint = "http://localhost:8080";
+var endpoint = "";
 var static_tags = [
 	"happy",
 	"sad",
@@ -68,22 +68,41 @@ var static_tags = [
 
 
 function startTwitterAuth() {
-
+	window.location.href = "/signin";
 }
 
-function submitTweet(txt, callback) {
-	callback("dummy tweeted: "+txt);
-	//$.post(endpoint+"/t/send", data, callback);
+function submitTweet(callback) {
+	var txt = $("#tweetfield").val(),
+		link = "http://i.imgur.com/jvYIj5Q.gif";
+		txt = txt + " " + link + " (via gifdme.com)";
+	// TODO vet the link, tweet length etc
+
+	$.post(endpoint+"/t/send", {'status': txt}, function(res) {
+		console.log(res);
+		callback();
+	});
 }
 
 function tagFromTweet(tw) {
 	// Find tagged emotions in tweets
 	
 	for (var i = 0, ii = static_tags.length; i < ii; i++) {
-		if (new Regexp("\b\%"+static_tags[i]+"\b")).test(tw) return static_tags[i];
+		var re = new RegExp("[^\b]?[%]"+static_tags[i]+"\b?","gim");
+		if (re.test(tw) ) { return static_tags[i]; }
 	}	
 	return "";
 };
+
+function insertGif(callback) {
+	var gif = {
+		url: $("#urlEntry").val(),
+		tags: [$("#tagSet").val()]
+	}
+	
+	$.post(endpoint+"/g/new", gif, function(res) {
+		callback();
+	});
+}
 
 function lazyGifList() {
 	var gifCount = $("ul.items li").length;
