@@ -9,7 +9,7 @@ var currentTag = "",
 $(function() {
 	$('.slider').hide();
 	
-		$('.slider').addEventListener('slide', setCurrentGif);
+		$('.slider').get().addEventListener('slide', setCurrentGif);
 	
 	// Tweet entry form
 	$(".tweet-form textarea").keyup(function() {
