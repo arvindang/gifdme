@@ -9,7 +9,7 @@ $(function() {
 	// Tweet entry form
 	$("#tweetfield").change(function() {
 		var newTag = $(this).val();
-		if (currentTag != newTag && !overrideTag) {
+		if (currentTag != newTag && !overrideTag && false) {
 			currentTag = newTag;
 			getGifsByTag(currentTag,0,10,function(resp) {
 				for (var i = 0, ii = resp.length; i < ii; i++) {
