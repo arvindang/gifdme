@@ -84,7 +84,7 @@ app.get('/twauth', function(req, res){
       		console.log("Verifying Credentials...");
       		if(err) {
         		console.log("Verification failed : " + err)
-        		res.redirect('/');
+        		res.redirect('/home.html');
         	}
     	})
 
@@ -102,7 +102,9 @@ app.get('/etc/tokenCount',function(req,res) {
 checkAuth = function(req,res) {
 
 };
-
+app.get('/', function(req,res) {
+	res.redirect('/home.html');
+});
 app.get('/index.html', function(req,res) {
 	res.redirect('/home.html');
 });
