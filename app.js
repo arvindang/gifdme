@@ -99,5 +99,5 @@ app.get('/g/special/randomTop', function(req,res) {
 
 
 
-app.listen(8080);
-console.log("Listening on 8080.");
+app.listen(80);
+console.log("Listening on 80.");
