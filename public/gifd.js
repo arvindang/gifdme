@@ -44,11 +44,11 @@ $(function() {
 		gifId = parseInt(gifId);
 		
 		if (selectedGif == gifId) {
-			i.removeClass('.toggleImage');
+			i.removeClass('toggleImage');
 			selectedGif = -1;
 		} else {
-			i.addClass('.toggleImage');
-			$("gif"+selectedGif).removeClass('.toggleImage');
+			i.addClass('toggleImage');
+			$("gif"+selectedGif).removeClass('toggleImage');
 			selectedGif = gifId;
 		}
 	});
