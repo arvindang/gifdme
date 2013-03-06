@@ -38,7 +38,7 @@ $(function() {
 	// GIF browsing UI
 	// !?@#@$
 	
-	$(".item-image img").live('click', function() {
+	$("ul.items").on('click', '.item-image img', function() {
 		var i = $(this);
 		var gifId = i.attr("id").substring(3);
 		gifId = parseInt(gifId);
