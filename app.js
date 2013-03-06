@@ -74,7 +74,7 @@ app.get('/twauth', function(req, res){
 	 console.log("Sucessfully Authenticated with Twitter...")
 	 
 	twitter.gatekeeper()(req,res,function(){
-    	req_cookie = twit.cookie(req);
+    	req_cookie = twitter.cookie(req);
     	twitter.options.access_token_key = req_cookie.access_token_key;
     	twitter.options.access_token_secret = req_cookie.access_token_secret; 
 
