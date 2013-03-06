@@ -26,15 +26,14 @@ $(function() {
 	});
 	
 	// Submit Tweet
-	console.log("FFFS");
-	console.log(submitTweet);
-	$("#sendTweet2").on('click',function() {
+
+	$("#sendTweet").on('click',function(e) {
+		e.preventDefault();
 		console.log("FFSS");
 		submitTweet(function(resp) {
 			console.log("Response: "+resp);
 		});
 	});
-	console.log('it definitely went over the code');
 	// GIF browsing UI
 	// !?@#@$
 	
@@ -84,7 +83,6 @@ function submitTweet(callback) {
 		link = "http://i.imgur.com/jvYIj5Q.gif";
 		txt = txt + " " + link + " (via gifdme.com)";
 	// TODO vet the link, tweet length etc
-	console.log('<-');
 	$.post(endpoint+"/t/send", {'status': txt}, function(res) {
 		console.log(res);
 		callback();
