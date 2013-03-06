@@ -99,7 +99,7 @@ function submitTweet(callback) {
 		link = $("#gif"+selectedGif).attr("src");
 		txt = txt + " " + link + " @gifdme";
 		
-	if (!txt || selectedGif == -1 || txt.length>112) {
+	if (!txt || selectedGif == -1 || txt.length>113) {
 		console.log(txt.length)
 		console.log(link);
 		if (seletedGif == -1) {
