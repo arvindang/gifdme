@@ -72,8 +72,13 @@ function startTwitterAuth() {
 }
 
 function submitTweet(txt, callback) {
-	callback("dummy tweeted: "+txt);
-	//$.post(endpoint+"/t/send", data, callback);
+	
+
+	$.post(endpoint+"/t/send", {'status': txt}, function(err, res) {
+		console.log(err);
+		console.log(res);
+		callback();
+	});
 }
 
 function tagFromTweet(tw) {

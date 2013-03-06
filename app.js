@@ -71,9 +71,10 @@ app.post('/t/send', function(req,res) {
 	
 	//db.updateGif uses++
 	
-	// twitter.updateStatus(req.body.text, function() {
-	
-	//});
+	twitter.verifyCredentials().updateStatus(req.body, function(err, res) {
+		console.log(err);
+		console.log(res);
+	});
 	res.send('unimplemented');
 });
 
