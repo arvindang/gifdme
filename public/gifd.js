@@ -28,7 +28,7 @@ $(function() {
 	// Submit Tweet
 	console.log("FFFS");
 	console.log(submitTweet);
-	$("#sendTweet").click(function() {
+	$("#sendTweet2").on('click',function() {
 		console.log("FFSS");
 		submitTweet(function(resp) {
 			console.log("Response: "+resp);
