@@ -22,7 +22,7 @@ $(function() {
 	
 	// Submit Tweet
 	$("#submittweet").click(function() {
-		submitTweet($(this).val(), function(resp) {
+		submitTweet($("#tweetfield").val(), function(resp) {
 			console.log("Response: "+resp);
 		});
 	});

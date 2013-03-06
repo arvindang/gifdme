@@ -15,6 +15,7 @@ app.use('/img', express.static(__dirname + '/public/img') );
 app.use('/touch-icons', express.static(__dirname + '/public/touch-icons') );
 app.use('/stylesheets', express.static(__dirname + '/public/stylesheets') );
 app.use(express.bodyParser());
+app.use(express.cookieParser());
 //app.engine('haml', r);
 // middleware goes here
 
