@@ -8,8 +8,8 @@ $(function() {
 	
 	// Tweet entry form
 	$("#tweetfield").change(function() {
-		var newTag = $(this).val();
-		if (currentTag != newTag && !overrideTag && false) {
+		var newTag = tagFromTweet($(this).val());
+		if (currentTag != newTag && !overrideTag) {
 			currentTag = newTag;
 			getGifsByTag(currentTag,0,10,function(resp) {
 				for (var i = 0, ii = resp.length; i < ii; i++) {
@@ -22,7 +22,7 @@ $(function() {
 	
 	// Submit Tweet
 	$("#submittweet").click(function() {
-		submitTweet($("#tweetfield").val(), function(resp) {
+		submitTweet(function(resp) {
 			console.log("Response: "+resp);
 		});
 	});
@@ -68,14 +68,16 @@ var static_tags = [
 
 
 function startTwitterAuth() {
-
+	window.location.href = "/signin";
 }
 
-function submitTweet(txt, callback) {
-	
+function submitTweet(callback) {
+	var txt = $("#tweetfield").val(),
+		link = "http://i.imgur.com/jvYIj5Q.gif";
+		txt = txt + " " + link + " (via gifdme.com)";
+	// vet the link
 
-	$.post(endpoint+"/t/send", {'status': txt}, function(err, res) {
-		console.log(err);
+	$.post(endpoint+"/t/send", {'status': txt}, function(res) {
 		console.log(res);
 		callback();
 	});
@@ -90,6 +92,17 @@ function tagFromTweet(tw) {
 	}	
 	return "";
 };
+
+function insertGif(callback) {
+	var gif = {
+		url: $("#urlEntry").val(),
+		tags: [$("#tagSet").val()]
+	}
+	
+	$.post(endpoint+"/g/new", gif, function(res) {
+		callback();
+	});
+}
 
 function lazyGifList() {
 	var gifCount = $("ul.items li").length;

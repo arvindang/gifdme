@@ -50,7 +50,7 @@ app.get('/g/fetch/tag/:tag/:pos/:count', function(req,res) {
 	});
 });
 
-app.post('/g/admin/new', function(req,res) {
+app.post('/g/new', function(req,res) {
 	/*
 	* Expects JSON:
 	* url : string
@@ -100,9 +100,10 @@ app.post('/t/send', function(req,res) {
 
     	twitter.verifyCredentials(function (err, data) {
       		console.log("Verifying Credentials...");
-      		if(err)
+      		if(err) {
         		console.log("Verification failed : " + err)
         		res.send("Twitter login error");
+        	}
     	}).updateStatus(req.body.status, function(err, data) {
     		if (err) {
     			console.log(err);
