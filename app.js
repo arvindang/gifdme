@@ -64,12 +64,37 @@ app.post('/g/admin/new', function(req,res) {
 	});
 });
 
-app.get('/twauth', function(req,res) {
+app.get('/signin', function(req,res) {
 	
 	var path = url.parse(req.url, true);
-	twitter.login(path.pathname,"/twitter_callback")(req,res);
-	
+	twitter.login(path.pathname,"/twauth")(req,res);
 });
+app.get('/twauth', function(req, res){
+	 console.log("Sucessfully Authenticated with Twitter...")
+	 
+	twitter.gatekeeper()(req,res,function(){
+    	req_cookie = twit.cookie(req);
+    	twitter.options.access_token_key = req_cookie.access_token_key;
+    	twitter.options.access_token_secret = req_cookie.access_token_secret; 
+
+    	twitter.verifyCredentials(function (err, data) {
+      		console.log("Verifying Credentials...");
+      		if(err)
+        		console.log("Verification failed : " + err)
+    	})
+    	.getHomeTimeline('', function (err, data) {
+        	console.log("Timeline Data Returned...");
+	        // console.log(data);
+        var view_data = {
+          "timeline" : JSON.stringify(data)
+        }
+
+        console.log("Exiting Controller.");
+        res.send(view_data);
+      });
+  });
+});
+
 app.post('/t/send', function(req,res) {
 	// magic goes here
 
