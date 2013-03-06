@@ -106,7 +106,7 @@ function startTwitterAuth() {
 function setCurrentGif(err, slider) {
 	console.log(slider);
 	console.log(err);
-	selectedGif = slider.slideNumber;
+	selectedGif = slider.detail.slideNumber;
 }
 
 function submitTweet(callback) {
