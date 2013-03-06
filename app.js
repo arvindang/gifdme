@@ -4,6 +4,7 @@
 var db = require('./db.js');
 var express = require('express');
 var twitter = require('./twitter.js').twitter;
+var url = require('url');
 // TODO: request and record the t.co url length (??)
 // tweet should have that much room for the link (and one whitespace)
 
