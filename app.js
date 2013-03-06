@@ -80,15 +80,20 @@ app.get('/twauth', function(req, res){
 
     	twitter.verifyCredentials(function (err, data) {
       		console.log("Verifying Credentials...");
-      		if(err)
+      		if(err) {
         		console.log("Verification failed : " + err)
-        		res.send("Twitter login error");
+        		res.redirect('/');
+        	}
     	})
 
         res.send('ok');
         // TODO: send them to homepage instead?
   });
 });
+
+checkAuth = function(req,res) {
+
+};
 
 app.post('/t/send', function(req,res) {
 	// magic goes here
@@ -135,5 +140,5 @@ app.get('/g/special/randomTop', function(req,res) {
 	res.send("not implemented");
 });
 
-app.listen(process.env.PORT);
-console.log("Listening on HEROKU PORT.");
+app.listen(process.env.PORT || 5000);
+console.log("Listening on "+app.port);

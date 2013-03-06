@@ -7,7 +7,7 @@ var currentTag = "",
 $(function() {
 	
 	// Tweet entry form
-	$("#tweetfield").change(function() {
+	$(".tweet-area textarea").change(function() {
 		var newTag = tagFromTweet($(this).val());
 		if (currentTag != newTag && !overrideTag) {
 			currentTag = newTag;
@@ -21,7 +21,7 @@ $(function() {
 	});
 	
 	// Submit Tweet
-	$("#submittweet").click(function() {
+	$("#sendTweet").click(function() {
 		submitTweet(function(resp) {
 			console.log("Response: "+resp);
 		});
