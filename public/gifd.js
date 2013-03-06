@@ -38,15 +38,17 @@ $(function() {
 	// GIF browsing UI
 	// !?@#@$
 	
-	$(".item-image img").click(function() {
-		var gifId = $(this).attr("id").substring(3);
+	$(".item-image").click(function() {
+		console.log(this.className);
+		var i = $(this).children("img");
+		var gifId = i.attr("id").substring(3);
 		gifId = parseInt(gifId);
 		
 		if (selectedGif == gifId) {
-			$(this).removeClass('.toggleImage');
+			i.removeClass('.toggleImage');
 			selectedGif = -1;
 		} else {
-			$(this).addClass('.toggleImage');
+			i.addClass('.toggleImage');
 			$("gif"+selectedGif).removeClass('.toggleImage');
 			selectedGif = gifId;
 		}
