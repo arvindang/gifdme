@@ -46,16 +46,6 @@ app.get('/g/fetch/tag/:tag/:pos/:count', function(req,res) {
 	});
 });
 
-app.get('/g/flag/:id', function(req,res) {
-	res.send('not implemented');
-});
-
-app.get('/g/special/randomTop', function(req,res) {
-	// FIND BY SUPER COOL QUERY
-	// then grab a random index and dump it out
-	res.send("not implemented");
-});
-
 app.post('/g/admin/new', function(req,res) {
 	/*
 	* Expects JSON:
@@ -71,6 +61,17 @@ app.post('/g/admin/new', function(req,res) {
 	});
 });
 
+app.get('/twauth', function(req,res) {
+	twitter.verifyCredentials(function(data) {
+        console.log(util.inspect(data));
+    })
+});
+app.post('/t/send', function(req,res) {
+	// magic goes here
+	
+	res.send('unimplemented');
+});
+
 app.get('/g/admin/delete/:url', function(req,res) {
 	// check if logged in as admin 
 	// if so: else berate them + increase suspicion vs user/IP (for scaling / security)
@@ -81,14 +82,17 @@ app.get('/g/admin/delete/:url', function(req,res) {
 	// }
 	res.send("not implemented");
 });
-
-
-
-app.post('/t/send', function(req,res) {
-	// magic goes here
-	
-	res.send('unimplemented');
+app.get('/g/flag/:id', function(req,res) {
+	res.send('not implemented');
 });
+app.get('/g/special/randomTop', function(req,res) {
+	// FIND BY SUPER COOL QUERY
+	// then grab a random index and dump it out
+	res.send("not implemented");
+});
+
+
+
 
 app.listen(8080);
 console.log("Listening on 8080.");
