@@ -1,0 +1,29 @@
+<html>
+<head>
+<script src="jquery.js"></script>
+<script src="gifd.js"></script>
+<script>
+	$(function() {
+		$("#submit_gif").click(function() {
+			insertGif($("#add_url").val(),$("#add_tag").val(), function() {
+				window.location.reload();
+			});
+		});
+	});
+</script>
+</head>
+<body>
+<input id="add_url" type="text" />
+<select id="add_tag">
+<option>happy</option>
+<option>sad</option>
+<option>love</option>
+<option>hate</option>
+<option>party</option>
+<option>fail</option>
+<option>bored</option>
+<option>eyeroll</option>
+</select>
+<button id="submit_gif">Submit</button>
+</body>
+</html>
