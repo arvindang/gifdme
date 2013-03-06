@@ -96,5 +96,5 @@ app.get('/g/special/randomTop', function(req,res) {
 	res.send("not implemented");
 });
 
-app.listen(8080);
-console.log("Listening on 8080.");
+app.listen(process.env.PORT);
+console.log("Listening on HEROKU PORT.");
