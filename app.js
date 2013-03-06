@@ -86,7 +86,7 @@ app.get('/twauth', function(req, res){
         	}
     	})
 
-        res.send('ok');
+        res.redirect('/mobile-post.html');
         // TODO: send them to homepage instead?
   });
 });

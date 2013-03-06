@@ -5,18 +5,23 @@ var currentTag = "",
 
 // document ready
 $(function() {
-	
+	$('.slider').hide();
 	// Tweet entry form
 	$(".tweet-area textarea").change(function() {
 		var newTag = tagFromTweet($(this).val());
 		if (currentTag != newTag && !overrideTag) {
 			currentTag = newTag;
-			getGifsByTag(currentTag,0,10,function(resp) {
-				for (var i = 0, ii = resp.length; i < ii; i++) {
-					var gif = resp[i];
-					$("ul.items").append('<li class="item"><div class="item-image"><img src="'+gif.url+'"></div><p><strong>Tags:</strong><ul class="tag-list"><li><a href="#">Celebrate</a></li><li><a href="#">Happy</a></li><li><a href="#">Funny</a></li></ul></p></li>');
-				}
-			});
+			if (currentTag != "") {
+				$(".slider").show();
+				getGifsByTag(currentTag,0,10,function(resp) {
+					for (var i = 0, ii = resp.length; i < ii; i++) {
+						var gif = resp[i];
+						$("ul.items").append('<li class="item"><div class="item-image"><img src="'+gif.url+'"></div><p><strong>Tags:</strong><ul class="tag-list"><li><a href="#">Celebrate</a></li><li><a href="#">Happy</a></li><li><a href="#">Funny</a></li></ul></p></li>');
+					}
+				});
+			} else {
+				$(".slider").hide();
+			}
 		}
 	});
 	
