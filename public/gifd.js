@@ -7,7 +7,7 @@ var currentTag = "",
 $(function() {
 	$('.slider').hide();
 	// Tweet entry form
-	$(".tweet-area textarea").change(function() {
+	$(".tweet-form textarea").change(function() {
 		var newTag = tagFromTweet($(this).val());
 		if (currentTag != newTag && !overrideTag) {
 			currentTag = newTag;
@@ -26,8 +26,7 @@ $(function() {
 	});
 	
 	// Submit Tweet
-	$(".posttotwitter").click(function(e) {
-		e.preventDefault();
+	$(".posttotwitter").click(function() {
 		submitTweet(function(resp) {
 			console.log("Response: "+resp);
 		});
@@ -78,11 +77,11 @@ function startTwitterAuth() {
 }
 
 function submitTweet(callback) {
-	var txt = $("#tweetfield").val(),
+	var txt = $(".tweet-form textarea").val(),
 		link = "http://i.imgur.com/jvYIj5Q.gif";
 		txt = txt + " " + link + " (via gifdme.com)";
 	// TODO vet the link, tweet length etc
-
+	console.log('<-');
 	$.post(endpoint+"/t/send", {'status': txt}, function(res) {
 		console.log(res);
 		callback();
