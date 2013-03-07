@@ -142,7 +142,10 @@ app.get('/g/admin/delete/:url', function(req,res) {
 	// res.send("ok");
 	// else minor suspicion vs user/IP
 	// }
-	res.send("not implemented");
+	db.deleteGif(req.url, function(err) {
+		res.send("ok");
+	});
+	
 });
 app.get('/g/flag/:id', function(req,res) {
 	res.send('not implemented');

@@ -164,6 +164,12 @@ function insertGif(u, t, callback) {
 	});
 }
 
+function deleteGif(u) {
+	$.get(endpoint+"/g/admin/delete/"+u, function(res) {
+		console.log("Deleted gif for: "+u;
+	});
+}
+
 function lazyGifList() {
 	var gifCount = $("ul.items li").length;
 	if (listPosition >= gifCount-2) {
