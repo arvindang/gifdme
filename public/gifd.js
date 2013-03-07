@@ -166,7 +166,7 @@ function insertGif(u, t, callback) {
 
 function deleteGif(u) {
 	$.get(endpoint+"/g/admin/delete/"+u, function(res) {
-		console.log("Deleted gif for: "+u;
+		console.log("Deleted gif for: "+u);
 	});
 }
 
