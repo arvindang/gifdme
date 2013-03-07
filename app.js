@@ -134,7 +134,7 @@ app.post('/t/send', function(req,res) {
 
 });
 
-app.get('/g/admin/delete/:url', function(req,res) {
+app.post('/g/admin/delete', function(req,res) {
 	// check if logged in as admin 
 	// if so: else berate them + increase suspicion vs user/IP (for scaling / security)
 	// db.deleteGif(req.url, function(err) {
@@ -142,7 +142,7 @@ app.get('/g/admin/delete/:url', function(req,res) {
 	// res.send("ok");
 	// else minor suspicion vs user/IP
 	// }
-	db.deleteGif(req.url, function(err) {
+	db.deleteGif(req.body, function(err) {
 		res.send("ok");
 	});
 	
