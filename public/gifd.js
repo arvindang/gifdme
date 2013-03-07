@@ -21,6 +21,7 @@ $(function() {
 				getGifsByTag(currentTag,0,10,function(resp) {
 					$("ul.items li").remove();
 					selectedGif = 0;
+					listPosition = 10;
 					for (var i = 0, ii = resp.length; i < ii; i++) {
 						var gif = resp[i];
 						console.log(gif);
@@ -65,8 +66,9 @@ $(function() {
 	$(".tag-click").click(function() {
 		currentTag = $(this).val();
 		overrideTag = true;
-		getGifsByTag(currentTag,0,4,function(resp) {
+		getGifsByTag(currentTag,0,10,function(resp) {
 			$("ul.items li").remove();
+			listPosition = 10;
 			for (var i = 0, ii = resp.length; i < ii; i++) {
 				var gif = resp[i];
 				$("ul.items").append('<li class="item"><div class="item-image"><img src="'+gif.url+'"></div></li>');
@@ -108,6 +110,7 @@ function startTwitterAuth() {
 function setCurrentGif(slider) {
 	console.log(slider);
 	selectedGif = slider.detail.slideNumber;
+	lazyGifList();
 }
 
 function submitTweet(callback) {
