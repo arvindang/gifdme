@@ -106,7 +106,7 @@ checkAuth = function(req,res) {
 
 var adminList = ["swmuron","caitymoran","arvindang"]
 
-function checkAdmin(req,res,callback) {
+function adminCheck(req,res,callback) {
 	twitter.gatekeeper()(req,res,function() {
     	req_cookie = twitter.cookie(req);
     	twitter.options.access_token_key = req_cookie.access_token_key;
