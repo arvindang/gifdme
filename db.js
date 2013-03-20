@@ -22,6 +22,21 @@ exports.recordUser = function(user, cb) {
 
 exports.countUsers = function(cb) {
 	cb(0);
+};
+
+exports.gifUsed = function(gif, cb) {
+		dbclient.collection('gifs', function(err, collection) {
+			collection.update({"url": gif}, { "$inc": { 'uses': 1 } },function(err, docs) {
+				if (err) {
+					console.log(err);
+					cb(false); // tell express handler it failed
+				} else {
+					console.log("Use count updated");
+					console.log(docs);
+					cb(true); // tell express it succeeded
+				}
+			});
+		});
 }
 
 exports.insertGif = function(gif, url, cb) {

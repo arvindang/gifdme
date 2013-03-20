@@ -17,7 +17,7 @@ app.use('/touch-icons', express.static(__dirname + '/public/touch-icons') );
 app.use('/stylesheets', express.static(__dirname + '/public/stylesheets') );
 app.use(express.bodyParser());
 app.use(express.methodOverride());
-app.use(express.cookieParser('secretsession'));
+app.use(express.cookieParser('secretsessionbatteryhorsestaple'));
 app.use(express.session());
 //app.engine('haml', r);
 // middleware goes here
@@ -125,9 +125,18 @@ app.post('/t/send', function(req,res) {
     	}).updateStatus(req.body.status, function(err, data) {
     		if (err) {
     			console.log(err);
-    			res.send("Twitter error");
+    			res.send(Twitter error: "+err);
     		} else {
-    			res.send(data);
+				// update db based on gif used
+				db.gifUsed(gif.url, function(e, d) {
+					if (e) {
+						console.log(e);
+					} else {
+
+					}
+					res.send(data);
+				});
+    			
     		}
     	});
   });
