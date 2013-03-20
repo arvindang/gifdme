@@ -91,7 +91,7 @@ app.get('/twauth', function(req, res){
         		
         		res.redirect('/home.html');
         	} else {
-        		res.redirect('/mobile-post.html');
+        		res.redirect('/dashboard.html');
         	}
     	})
 
