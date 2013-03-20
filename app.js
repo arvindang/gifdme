@@ -104,6 +104,31 @@ checkAuth = function(req,res) {
 
 };
 
+var adminList = ["swmuron","caitymoran","arvindang"]
+
+function checkAdmin = function(req,res,callback) {
+	twitter.gatekeeper()(req,res,function() {
+    	req_cookie = twitter.cookie(req);
+    	twitter.options.access_token_key = req_cookie.access_token_key;
+    	twitter.options.access_token_secret = req_cookie.access_token_secret;
+    	
+    	twitter.verifyCredentials(function (err, data) {
+    		if (err) {
+    			//console.log(err)
+    			callback("error");
+    		} else {
+    			if (adminList.indexOf(data.screen_name) != -1) {
+    				// this is an admin
+    				callback("admin");
+    			} else {
+    				// this is not an admin
+	    			callback("normal");
+	    		}
+    		}
+    	});
+	});
+};
+
 app.get('/index.html', function(req,res) {
 	res.redirect('/home.html');
 });
@@ -124,6 +149,7 @@ app.post('/t/send', function(req,res) {
         	} else {
         		console.log("Verified login:");
         		console.log(data);
+        		// data.screen_name = user's name
         	}
     	}).updateStatus(req.body.status, function(err, data) {
     		if (err) {
@@ -144,6 +170,12 @@ app.post('/t/send', function(req,res) {
     	});
   });
 
+});
+
+app.get('/admin/test', function(req,res) {
+	adminCheck(req,res,function(cred) {
+		res.send(cred);
+	});
 });
 
 app.get('/g/admin/delete/:id', function(req,res) {
