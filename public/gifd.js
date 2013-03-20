@@ -121,8 +121,8 @@ function submitTweet(callback) {
 	var txt = $(".tweet-form textarea").val(),
 		link = $("#gif"+selectedGif).attr("src");
 		txt = txt + " " + link + " @gifdme";
-
-	if (!txt || selectedGif == -1 || txt.length>113) {
+	console.log(link);
+	if (!txt || selectedGif == -1 || txt.length>113 || (typeof link == "undefined")) {
 		console.log(txt.length)
 		console.log(link);
 		if (selectedGif == -1) {
@@ -161,7 +161,7 @@ function insertGif(u, t, callback) {
 		url: u,
 		tags: [t]
 	}
-
+	console.log(u);
 	$.post(endpoint+"/g/new", gif, function(res) {
 		callback();
 	});
@@ -180,7 +180,7 @@ function lazyGifList() {
 		getGifsByTag(currentTag,gifCount,4,function(resp) {
 			for (var i = 0, ii = resp.length; i < ii; i++) {
 				var gif = resp[i];
-				$("ul.items").append('<li class="item"><div class="item-image"><img id="gif'+i+'" src="'+gif.url+'"></div></li>');
+				$("ul.items").append('<li class="item"><div class="item-image"><img id="gif'+(gifCount+i)+'" src="'+gif.url+'"></div></li>');
 			}
 		});
 	}
