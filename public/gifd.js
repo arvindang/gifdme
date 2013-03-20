@@ -134,11 +134,11 @@ function submitTweet(callback) {
 	}
 
 	// TODO vet the link, tweet length etc
-	$.post(endpoint+"/t/send", {'status': txt, 'url': link}, function(err, res) {
+	$.post(endpoint+"/t/send", {'status': txt, 'url': link}, function(res,err) {
 		console.log(res);
-		if (err) {
-			console.log(err);
-			callback('error')
+		if (res == "error") {
+			//console.log(err);
+			callback('error');
 		} else {
 			callback();
 			window.location.href = './mobile-post.html';

@@ -154,7 +154,7 @@ app.post('/t/send', function(req,res) {
     	}).updateStatus(req.body.status, function(err, data) {
     		if (err) {
     			console.log(err);
-    			res.send("Twitter error: "+err);
+    			res.send("error");
     		} else {
 				// update db based on gif used
 				db.gifUsed(req.body.url, function(e, d) {
