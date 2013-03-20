@@ -121,6 +121,9 @@ app.post('/t/send', function(req,res) {
       		if(err) {
         		console.log("Verification failed : " + err)
         		res.send("Twitter login error");
+        	} else {
+        		console.log("Verified login:");
+        		console.log(data);
         	}
     	}).updateStatus(req.body.status, function(err, data) {
     		if (err) {
