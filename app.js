@@ -128,7 +128,7 @@ app.post('/t/send', function(req,res) {
     			res.send("Twitter error: "+err);
     		} else {
 				// update db based on gif used
-				db.gifUsed(gif.url, function(e, d) {
+				db.gifUsed(req.body.url, function(e, d) {
 					if (e) {
 						console.log(e);
 					} else {

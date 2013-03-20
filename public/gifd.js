@@ -134,7 +134,7 @@ function submitTweet(callback) {
 	}
 
 	// TODO vet the link, tweet length etc
-	$.post(endpoint+"/t/send", {'status': txt}, function(err, res) {
+	$.post(endpoint+"/t/send", {'status': txt, 'url': link}, function(err, res) {
 		console.log(res);
 		if (err) {
 			console.log(err);
