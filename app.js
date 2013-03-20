@@ -125,14 +125,14 @@ app.post('/t/send', function(req,res) {
     	}).updateStatus(req.body.status, function(err, data) {
     		if (err) {
     			console.log(err);
-    			res.send(Twitter error: "+err);
+    			res.send("Twitter error: "+err);
     		} else {
 				// update db based on gif used
 				db.gifUsed(gif.url, function(e, d) {
 					if (e) {
 						console.log(e);
 					} else {
-
+						console.log(d);
 					}
 					res.send(data);
 				});
