@@ -156,8 +156,10 @@ app.get('/g/admin/delete/:id', function(req,res) {
 	});
 	
 });
-app.get('/g/flag/:id', function(req,res) {
-	res.send('not implemented');
+app.get('/g/flag/:id/:type', function(req,res) {
+	db.modifyGif(req.params.id, req.params.type, function (err, result) {
+			res.send( !err ? "ok" : err);
+	});
 });
 app.get('/g/special/randomTop', function(req,res) {
 	// FIND BY SUPER COOL QUERY
