@@ -17,46 +17,38 @@
     <!-- <link rel="apple-touch-icon-precomposed" sizes="57x57" href="touch-icons/apple-touch-icon-57x57.png"> -->
 
     <!-- Include the compiled Ratchet CSS -->
-    <link rel="stylesheet" href="stylesheets/ratchet.css">
-    <link rel="stylesheet" href="stylesheets/override.css">
+    <!-- <link rel="stylesheet" href="stylesheets/ratchet.css"> -->
+    <!-- <link rel="stylesheet" href="stylesheets/override.css"> -->
+    <link rel="stylesheet" type="text/css" href="stylesheets/reset.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/global.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/mobile.css">
 
-    <!-- Include the compiled Ratchet JS -->
-    <script src="jquery.js"></script>
-    <!--<script src="lazyload.js"></script>-->
-    <script src="ratchet.js"></script>
     <script src="gifd.js"></script>
 
   </head>
   <body>
 
-  <!-- Make sure all your bars are the first things in your <body> -->
   <header class="bar-title">
-    <!--<a class="button-prev" href="mobile-home.html" data-ignore="push">Home</a>-->
-    <h1 class="title">Gifd</h1>
     <a id="sendTweet" class="button" href="#">Send</a>
   </header>
 
-  <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
-  <div class="content">
+  <div class="container">
 
     <form class="content-padded tweet-form">
-      <textarea rows="5" placeholder="Surprise me."></textarea>
-      <p class="key">%happy %sad %love %hate %party %fail %bored %eyeroll</p>
+      <textarea placeholder="Surprise me."></textarea>
+      <ul>
+        <li><a href="#">%happy</a></li>
+        <li><a href="#">%sad</a></li>
+        <li><a href="#">%love</a></li>
+        <li><a href="#">%hate</a></li>
+        <li><a href="#">%party</a></li>
+        <li><a href="#">%fail</a></li>
+        <li><a href="#">%bored</a></li>
+        <li><a href="#">%eyeroll</a></li>
+      </ul>
     </form>
 
-	<!--
-    <div class="content-padded">
-      <ul class="segmented-controller">
-        <li class="active">
-          <a href="#">Popular</a>
-        </li>
-        <li>
-          <a href="#">Yours</a>
-        </li>
-      </ul>
-    </div> -->
-
-    <!-- TODO:: Might require overflow hidden to be removed -->
     <div class="slider">
       <ul class="items">
       </ul>

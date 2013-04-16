@@ -1,0 +1,10 @@
+.tweet-form ul {
+	margin-left: 4%;
+}
+
+.tweet-form li {
+	list-style: none;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
